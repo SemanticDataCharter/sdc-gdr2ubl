@@ -11,5 +11,8 @@ The first target mapper of the sdc-mapper line: Governed Data Records as conform
   rules, written by `tools/build_mapping.py` from a spec in the model's labels. Equivalent, element by element, to
   HalvorsenDemo's hand-written UBL writer for all 52 sample records, apart from `listURI`, which names the list
   component's published identifier.
+- **The Order mapping** for the Order model (`h8bttbt9afwzf9zs4jhae566`), 181 rules. Equivalent to HalvorsenDemo's
+  writer for all 52 sample records, apart from `listURI` and the order of an item's repeated `Dimension` elements
+  (the record's here; UBL gives them none). The rules both documents share are in `tools/specs/common.py`.
 - **Exceptional Values are lost**: UBL has no null flavors. Where UBL requires the value, the aggregate or the document
   cannot be written, and the report or the error says which element UBL requires.

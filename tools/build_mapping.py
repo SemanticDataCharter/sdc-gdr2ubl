@@ -25,7 +25,10 @@ SDC4 = "https://semanticdatacharter.com/ns/sdc4/"
 
 
 def load_spec(name: str):
-    path = ROOT / "tools" / "specs" / f"{name}.py"
+    specs = ROOT / "tools" / "specs"
+    if str(specs) not in sys.path:
+        sys.path.insert(0, str(specs))            # a spec composes the shared rules in specs/common.py
+    path = specs / f"{name}.py"
     spec = importlib.util.spec_from_file_location(f"spec_{name}", path)
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)

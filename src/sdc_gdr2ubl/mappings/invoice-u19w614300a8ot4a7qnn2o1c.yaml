@@ -35,8 +35,6 @@ rules:
   - {component: ato2r6lpk92i9e5djcwrna74, to: 'cbc:ProfileID', transform: copy}
   # Profile Execution ID
   - {component: blz32vkqw11awazaklpdih7b, to: 'cbc:ProfileExecutionID', transform: copy}
-  # Invoice ID
-  - {component: jjrdrfy8mwl5mrhknuj91xnl, to: 'cbc:ID', transform: copy}
   # Copy Indicator
   - {component: nsv2eblxq8s0vk28ue2vh1fl, to: 'cbc:CopyIndicator', transform: copy}
   # Document UUID
@@ -45,38 +43,40 @@ rules:
   - {component: tkd16hhh9wbn0qya2ykm0552, to: 'cbc:IssueDate', transform: copy}
   # Issue Time
   - {component: oybfzltffyfioix1zdblxcp3, to: 'cbc:IssueTime', transform: copy}
-  # Due Date
-  - {component: izmk5n12dei1ocsv7dms9i99, to: 'cbc:DueDate', transform: copy}
-  # Invoice Type
-  - {component: kouipkai0jddzg957p6m8a14, to: 'cbc:InvoiceTypeCode', transform: copy, attributes: {listURI: 'https://semanticdatacharter.com/ns/sdc4/mc-kouipkai0jddzg957p6m8a14'}}
   # Note
   - {component: zvkk8ztob9gmrvvkzyibyrzk, to: 'cbc:Note', transform: copy}
-  # Tax Point Date
-  - {component: wc6bib746nf7du213xlzousz, to: 'cbc:TaxPointDate', transform: copy}
   # Document Currency
   - {component: xywkj11p7u8jhjaiim3h3gyp, to: 'cbc:DocumentCurrencyCode', transform: copy}
-  # Tax Currency
-  - {component: ftby5cu9ote7glq4chdq7iml, to: 'cbc:TaxCurrencyCode', transform: copy}
   # Pricing Currency
   - {component: a3o0vyby3nousr4jhtlsddn9, to: 'cbc:PricingCurrencyCode', transform: copy}
-  # Payment Currency
-  - {component: dke6vuqm4c79e6hlnqo9kz6k, to: 'cbc:PaymentCurrencyCode', transform: copy}
   # Accounting Cost
   - {component: jy2iyemtj9qmi8rvmzu1xw2f, to: 'cbc:AccountingCost', transform: copy}
   # Line Count
   - {component: c1c7iydc13os47ppwwtwsnum, to: 'cbc:LineCountNumeric', transform: copy}
-  # Buyer Reference
-  - {component: yzdm2ldib2w5nqattpealocf, to: 'cbc:BuyerReference', transform: copy}
-  # Document Status
-  - {component: mnuyvuxqsy0qskx8hiy6epff, to: '-', transform: omit, reason: UBL's Invoice carries no document status}
-  # Invoice Period
-  - {cluster: lxcfaaj41jaqhetpy8ekmvwj, to: 'cac:InvoicePeriod'}
   # Date Range
   - {cluster: ru9u47yxhe337pslpxm6cflx, to: .}
   # Date Range Start
   - {component: bcyjfdwobh9q60umle1amw0w, to: 'cbc:StartDate', transform: copy}
   # Date Range End
   - {component: moo2lije2b05ylq8q4t52lcb, to: 'cbc:EndDate', transform: copy}
+  # Invoice ID
+  - {component: jjrdrfy8mwl5mrhknuj91xnl, to: 'cbc:ID', transform: copy}
+  # Due Date
+  - {component: izmk5n12dei1ocsv7dms9i99, to: 'cbc:DueDate', transform: copy}
+  # Invoice Type
+  - {component: kouipkai0jddzg957p6m8a14, to: 'cbc:InvoiceTypeCode', transform: copy, attributes: {listURI: 'https://semanticdatacharter.com/ns/sdc4/mc-kouipkai0jddzg957p6m8a14'}}
+  # Tax Point Date
+  - {component: wc6bib746nf7du213xlzousz, to: 'cbc:TaxPointDate', transform: copy}
+  # Tax Currency
+  - {component: ftby5cu9ote7glq4chdq7iml, to: 'cbc:TaxCurrencyCode', transform: copy}
+  # Payment Currency
+  - {component: dke6vuqm4c79e6hlnqo9kz6k, to: 'cbc:PaymentCurrencyCode', transform: copy}
+  # Buyer Reference
+  - {component: yzdm2ldib2w5nqattpealocf, to: 'cbc:BuyerReference', transform: copy}
+  # Document Status
+  - {component: mnuyvuxqsy0qskx8hiy6epff, to: '-', transform: omit, reason: UBL's Invoice carries no document status}
+  # Invoice Period
+  - {cluster: lxcfaaj41jaqhetpy8ekmvwj, to: 'cac:InvoicePeriod'}
   # Order Reference
   - {cluster: zj2hjn6wx3dfa0h5vlzeexhw, to: 'cac:OrderReference'}
   # Order ID
@@ -89,14 +89,14 @@ rules:
   - {cluster: c9trmbywa8czks1lo7tl6wf4, to: 'cac:BillingReference'}
   # Invoice Document Reference
   - {cluster: nfzgoofnuo7i47mo0pv6180n, to: 'cac:InvoiceDocumentReference'}
-  # Document Reference
-  - {cluster: ouhl662e9dzv99ng02kotdsx, to: .}
-  # Document Reference
-  - {cluster: uk03ahua6zv9d0i5tqq5qzmh, to: .}
   # Despatch Document Reference
   - {cluster: ulo971f5gnqane7k9pd5iog3, to: 'cac:DespatchDocumentReference'}
   # Receipt Document Reference
   - {cluster: qhpvwltqz9t7ruv372qp7u5o, to: 'cac:ReceiptDocumentReference'}
+  # Document Reference
+  - {cluster: ouhl662e9dzv99ng02kotdsx, to: .}
+  # Document Reference
+  - {cluster: uk03ahua6zv9d0i5tqq5qzmh, to: .}
   # Originator Document Reference
   - {cluster: fzqzhzcv7z3plh5c3n90m4e9, to: 'cac:OriginatorDocumentReference'}
   # Additional Document Reference
@@ -113,42 +113,42 @@ rules:
   - {component: hyw1higymybzar9tv2ze77xa, to: 'cbc:DocumentType', transform: copy}
   # Document Description
   - {component: z181ta9jftxc7k63rv4nz1zv, to: 'cbc:DocumentDescription', transform: copy}
-  # Contract
-  - {cluster: t2n35sdg0xy8ria7ixcb464z, to: 'cac:ContractDocumentReference'}
   # Contract ID
   - {component: ksr1tl7okjcyf18nprakncw7, to: 'cbc:ID', transform: copy}
   # Contract Issue Date
   - {component: nvna1bzcdyspz7k40coxn5y7, to: 'cbc:IssueDate', transform: copy}
+  # Contract
+  - {cluster: t2n35sdg0xy8ria7ixcb464z, to: 'cac:ContractDocumentReference'}
   # Contract Type
   - {component: r4yktyzzaxury9xsfdw788tj, to: 'cbc:DocumentType', transform: copy}
   # Accounting Supplier Party
   - {cluster: f3duci830odmou614vn1rpgu, to: 'cac:AccountingSupplierParty'}
-  # Seller Supplier Party
-  - {cluster: xkkk5vyegpy4xdig8vnabstc, to: 'cac:SellerSupplierParty'}
+  # Payee Party
+  - {cluster: anpufgp9b2pqetblqffkfggy, to: 'cac:PayeeParty'}
+  # Tax Representative Party
+  - {cluster: fmybhv0a3jnnca8z2z73yuoq, to: 'cac:TaxRepresentativeParty'}
+  # Party (within Payee Party)
+  - {cluster: useph7s4ienfhwerqx2thedj, within: [anpufgp9b2pqetblqffkfggy], to: .}
+  # Party (within Tax Representative Party)
+  - {cluster: useph7s4ienfhwerqx2thedj, within: [fmybhv0a3jnnca8z2z73yuoq], to: .}
   # Supplier Party
   - {cluster: utcj07ovkb7ntkbq8ix0ro4l, to: .}
-  # Accounting Customer Party
-  - {cluster: iswfl2vzv0f9ctm5rjxa3ums, to: 'cac:AccountingCustomerParty'}
-  # Buyer Customer Party
-  - {cluster: nylve3b8ss572vh8zso2u4l7, to: 'cac:BuyerCustomerParty'}
   # Customer Party
   - {cluster: asbbdn0eof6713wx4y2e90c2, to: .}
   # Customer Assigned Account ID
   - {component: ybdlctks32zkkteycr5y1eq8, to: 'cbc:CustomerAssignedAccountID', transform: copy}
   # Supplier Assigned Account ID
   - {component: nhvx21mf5ac81670xyrpwbaz, to: 'cbc:SupplierAssignedAccountID', transform: copy}
-  # Payee Party
-  - {cluster: anpufgp9b2pqetblqffkfggy, to: 'cac:PayeeParty'}
-  # Tax Representative Party
-  - {cluster: fmybhv0a3jnnca8z2z73yuoq, to: 'cac:TaxRepresentativeParty'}
+  # Accounting Customer Party
+  - {cluster: iswfl2vzv0f9ctm5rjxa3ums, to: 'cac:AccountingCustomerParty'}
+  # Buyer Customer Party
+  - {cluster: nylve3b8ss572vh8zso2u4l7, to: 'cac:BuyerCustomerParty'}
+  # Seller Supplier Party
+  - {cluster: xkkk5vyegpy4xdig8vnabstc, to: 'cac:SellerSupplierParty'}
   # Delivery Party
   - {cluster: j5s0gw9dabkpb7hc8r0wiu8o, to: 'cac:DeliveryParty'}
   # Party
   - {cluster: useph7s4ienfhwerqx2thedj, to: 'cac:Party'}
-  # Party (within Payee Party)
-  - {cluster: useph7s4ienfhwerqx2thedj, within: [anpufgp9b2pqetblqffkfggy], to: .}
-  # Party (within Tax Representative Party)
-  - {cluster: useph7s4ienfhwerqx2thedj, within: [fmybhv0a3jnnca8z2z73yuoq], to: .}
   # Party (within Delivery Party)
   - {cluster: useph7s4ienfhwerqx2thedj, within: [j5s0gw9dabkpb7hc8r0wiu8o], to: .}
   # Endpoint ID
@@ -283,10 +283,6 @@ rules:
   - {component: qosequlh47qfvr6d5nzn9gh8, to: 'cbc:BaseAmount', transform: copy, units: {to: '@currencyID', transform: copy}}
   # Tax Total
   - {cluster: yat9nppabvpq1jrgpsi5g226, to: 'cac:TaxTotal'}
-  # Withholding Tax Total
-  - {cluster: vbhwnih68qljrm0xff5cm6b5, to: 'cac:WithholdingTaxTotal'}
-  # Tax Total (within Withholding Tax Total)
-  - {cluster: yat9nppabvpq1jrgpsi5g226, within: [vbhwnih68qljrm0xff5cm6b5], to: .}
   # Tax Amount
   - {component: gi49b158luigt4x2bhhbnux0, to: 'cbc:TaxAmount', transform: copy, units: {to: '@currencyID', transform: copy}}
   # Tax Subtotal
@@ -309,6 +305,10 @@ rules:
   - {component: mexx9mfi4rglmgi71nqf37ux, to: 'cbc:ID', transform: copy}
   # Tax Scheme Name
   - {component: g7952fbwz8uh2ig9uidu9877, to: 'cbc:Name', transform: copy}
+  # Withholding Tax Total
+  - {cluster: vbhwnih68qljrm0xff5cm6b5, to: 'cac:WithholdingTaxTotal'}
+  # Tax Total (within Withholding Tax Total)
+  - {cluster: yat9nppabvpq1jrgpsi5g226, within: [vbhwnih68qljrm0xff5cm6b5], to: .}
   # Legal Monetary Total
   - {cluster: aqajprszm8ykn1u919442rpw, to: 'cac:LegalMonetaryTotal'}
   # Line Extension Total Amount
@@ -353,38 +353,10 @@ rules:
   - {cluster: sg30zpa8nw143kctvpulzo0a, to: 'cac:InvoiceLine'}
   # Line ID
   - {component: qnymhn26y7zfy7jav1pi3dqi, to: 'cbc:ID', transform: copy}
-  # Invoiced Quantity
-  - {component: s9krftme8psf952d6lop4h2r, to: 'cbc:InvoicedQuantity', transform: copy, units: {to: '@unitCode', transform: copy}}
   # Line Extension Amount
   - {component: q2fgdapi4r5d406rbiuuwomp, to: 'cbc:LineExtensionAmount', transform: copy, units: {to: '@currencyID', transform: copy}}
-  # Tax Inclusive Line Extension Amount
-  - {component: dzsmbbloyp19dbgy6j1maz1q, to: 'cbc:TaxInclusiveLineExtensionAmount', transform: copy, units: {to: '@currencyID', transform: copy}}
-  # Free of Charge
-  - {component: ko11zu0n8anavb1ovyib9xyf, to: 'cbc:FreeOfChargeIndicator', transform: copy}
-  # Order Line Reference
-  - {cluster: c3qfzlybvce95akizb8gcbtw, to: 'cac:OrderLineReference'}
-  # Despatch Line Reference
-  - {cluster: l1irc9h6y2rjq65ayrg1v62o, to: 'cac:DespatchLineReference'}
-  # Receipt Line Reference
-  - {cluster: wxur4evykjxss5wlhc0pa32e, to: 'cac:ReceiptLineReference'}
-  # Line ID (within Order Line Reference)
-  - {component: qnymhn26y7zfy7jav1pi3dqi, within: [c3qfzlybvce95akizb8gcbtw], to: 'cbc:LineID', transform: copy}
-  # Line ID (within Despatch Line Reference)
-  - {component: qnymhn26y7zfy7jav1pi3dqi, within: [l1irc9h6y2rjq65ayrg1v62o], to: 'cbc:LineID', transform: copy}
-  # Line ID (within Receipt Line Reference)
-  - {component: qnymhn26y7zfy7jav1pi3dqi, within: [wxur4evykjxss5wlhc0pa32e], to: 'cbc:LineID', transform: copy}
-  # Sales Order Line ID
-  - {component: vzzejwis0nptpcqf5t5rb9sl, to: 'cbc:SalesOrderLineID', transform: copy}
   # Line Status
   - {component: sb5gat3jakjg1j6m78nq79in, to: 'cbc:LineStatusCode', transform: copy, attributes: {listURI: 'https://semanticdatacharter.com/ns/sdc4/mc-sb5gat3jakjg1j6m78nq79in'}}
-  # Document Reference (within Despatch Line Reference)
-  - {cluster: ouhl662e9dzv99ng02kotdsx, within: [l1irc9h6y2rjq65ayrg1v62o], to: 'cac:DocumentReference'}
-  # Document Reference (within Despatch Line Reference)
-  - {cluster: uk03ahua6zv9d0i5tqq5qzmh, within: [l1irc9h6y2rjq65ayrg1v62o], to: 'cac:DocumentReference'}
-  # Document Reference (within Receipt Line Reference)
-  - {cluster: ouhl662e9dzv99ng02kotdsx, within: [wxur4evykjxss5wlhc0pa32e], to: 'cac:DocumentReference'}
-  # Document Reference (within Receipt Line Reference)
-  - {cluster: uk03ahua6zv9d0i5tqq5qzmh, within: [wxur4evykjxss5wlhc0pa32e], to: 'cac:DocumentReference'}
   # Item
   - {cluster: g1mdkay36qkfgmtv4lvsqe4x, to: 'cac:Item'}
   # Item Description
@@ -439,3 +411,31 @@ rules:
   - {component: n2bk18wxzh5oggb19qgrbo3t, to: 'cbc:PriceTypeCode', transform: copy, attributes: {listURI: 'https://semanticdatacharter.com/ns/sdc4/mc-n2bk18wxzh5oggb19qgrbo3t'}}
   # Price Validity Period
   - {cluster: nf09mmhkifwsik543zulj8b0, to: 'cac:ValidityPeriod'}
+  # Invoiced Quantity
+  - {component: s9krftme8psf952d6lop4h2r, to: 'cbc:InvoicedQuantity', transform: copy, units: {to: '@unitCode', transform: copy}}
+  # Tax Inclusive Line Extension Amount
+  - {component: dzsmbbloyp19dbgy6j1maz1q, to: 'cbc:TaxInclusiveLineExtensionAmount', transform: copy, units: {to: '@currencyID', transform: copy}}
+  # Free of Charge
+  - {component: ko11zu0n8anavb1ovyib9xyf, to: 'cbc:FreeOfChargeIndicator', transform: copy}
+  # Order Line Reference
+  - {cluster: c3qfzlybvce95akizb8gcbtw, to: 'cac:OrderLineReference'}
+  # Despatch Line Reference
+  - {cluster: l1irc9h6y2rjq65ayrg1v62o, to: 'cac:DespatchLineReference'}
+  # Receipt Line Reference
+  - {cluster: wxur4evykjxss5wlhc0pa32e, to: 'cac:ReceiptLineReference'}
+  # Line ID (within Order Line Reference)
+  - {component: qnymhn26y7zfy7jav1pi3dqi, within: [c3qfzlybvce95akizb8gcbtw], to: 'cbc:LineID', transform: copy}
+  # Line ID (within Despatch Line Reference)
+  - {component: qnymhn26y7zfy7jav1pi3dqi, within: [l1irc9h6y2rjq65ayrg1v62o], to: 'cbc:LineID', transform: copy}
+  # Line ID (within Receipt Line Reference)
+  - {component: qnymhn26y7zfy7jav1pi3dqi, within: [wxur4evykjxss5wlhc0pa32e], to: 'cbc:LineID', transform: copy}
+  # Sales Order Line ID
+  - {component: vzzejwis0nptpcqf5t5rb9sl, to: 'cbc:SalesOrderLineID', transform: copy}
+  # Document Reference (within Despatch Line Reference)
+  - {cluster: ouhl662e9dzv99ng02kotdsx, within: [l1irc9h6y2rjq65ayrg1v62o], to: 'cac:DocumentReference'}
+  # Document Reference (within Despatch Line Reference)
+  - {cluster: uk03ahua6zv9d0i5tqq5qzmh, within: [l1irc9h6y2rjq65ayrg1v62o], to: 'cac:DocumentReference'}
+  # Document Reference (within Receipt Line Reference)
+  - {cluster: ouhl662e9dzv99ng02kotdsx, within: [wxur4evykjxss5wlhc0pa32e], to: 'cac:DocumentReference'}
+  # Document Reference (within Receipt Line Reference)
+  - {cluster: uk03ahua6zv9d0i5tqq5qzmh, within: [wxur4evykjxss5wlhc0pa32e], to: 'cac:DocumentReference'}
