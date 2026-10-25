@@ -16,7 +16,7 @@ classifiers = [
     "Programming Language :: Python :: 3",
 ]
 dependencies = [
-    "sdc-mapper>=4.1,<5",     # placements: cluster rules, steps, also, binding (4.1.0)
+    "sdc-mapper>=4.2,<5",     # placements: cluster rules, steps, also, binding (4.1.0); '=name' joins (4.2.0)
     "lxml>=5.0",
     "xmlschema>=3.0",         # the OASIS schemas: member order, required members, conformance
 ]

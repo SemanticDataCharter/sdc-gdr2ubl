@@ -14,5 +14,13 @@ The first target mapper of the sdc-mapper line: Governed Data Records as conform
 - **The Order mapping** for the Order model (`h8bttbt9afwzf9zs4jhae566`), 181 rules. Equivalent to HalvorsenDemo's
   writer for all 52 sample records, apart from `listURI` and the order of an item's repeated `Dimension` elements
   (the record's here; UBL gives them none). The rules both documents share are in `tools/specs/common.py`.
+- **The other six documents**: Order Response, Despatch Advice, Receipt Advice, Credit Note, Remittance Advice and the
+  Torvale Order profile. All 293 sample records across the eight models map to conformant UBL 2.3 documents,
+  equivalent to HalvorsenDemo's writers apart from how a component is named and the order of repeats UBL leaves
+  unordered. They use sdc-mapper 4.2.0's `=name` steps (the line's answer in the line item's status, the actual
+  delivery date in the shipment's delivery, the delivery window in the requested period) and declared cluster
+  `order` (lines in order past nine).
+- **The writer** resolves `=name` steps after placing every other value, and ranks repeats by the declared order of
+  the clusters that made them.
 - **Exceptional Values are lost**: UBL has no null flavors. Where UBL requires the value, the aggregate or the document
   cannot be written, and the report or the error says which element UBL requires.

@@ -286,25 +286,25 @@ rules:
   # Order Lines
   - {cluster: j8xmz0gphy9o3oxce7lbve7r, to: .}
   # Order Line 1
-  - {cluster: wt4auchxnmakrjmds5x1whwa, to: .}
+  - {cluster: wt4auchxnmakrjmds5x1whwa, to: ., order: 1}
   # Order Line 2
-  - {cluster: j6ecq9pmut2aih9yeu3h5415, to: .}
+  - {cluster: j6ecq9pmut2aih9yeu3h5415, to: ., order: 2}
   # Order Line 3
-  - {cluster: yrnt96wqqb5dfph2f8qsoo01, to: .}
+  - {cluster: yrnt96wqqb5dfph2f8qsoo01, to: ., order: 3}
   # Order Line 4
-  - {cluster: oy6u722nhzn0lmbiler5ok2o, to: .}
+  - {cluster: oy6u722nhzn0lmbiler5ok2o, to: ., order: 4}
   # Order Line 5
-  - {cluster: cxl45loleqqc3qohu4velqm9, to: .}
+  - {cluster: cxl45loleqqc3qohu4velqm9, to: ., order: 5}
   # Order Line 6
-  - {cluster: kdtp0t0c707szan8g9i0vajf, to: .}
+  - {cluster: kdtp0t0c707szan8g9i0vajf, to: ., order: 6}
   # Order Line 7
-  - {cluster: i8lvzep7y2wsp7fgncz6a27b, to: .}
+  - {cluster: i8lvzep7y2wsp7fgncz6a27b, to: ., order: 7}
   # Order Line 8
-  - {cluster: w71hwz3a6sh1vhwfvgtgpukl, to: .}
+  - {cluster: w71hwz3a6sh1vhwfvgtgpukl, to: ., order: 8}
   # Order Line 9
-  - {cluster: wn9ij0rbnqo1iw8nl4bwvcgb, to: .}
+  - {cluster: wn9ij0rbnqo1iw8nl4bwvcgb, to: ., order: 9}
   # Order Line 10
-  - {cluster: g2y66itjsmbya2uvjlscuxii, to: .}
+  - {cluster: g2y66itjsmbya2uvjlscuxii, to: ., order: 10}
   # Order Line
   - {cluster: bdcvdmd1kaflvqclv24gub3a, to: 'cac:OrderLine'}
   # Line Item

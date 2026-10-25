@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from lxml import etree
 
-from sdc_mapper import (DECLARED, LOOKUP, LOST, NOT_REPRESENTABLE, EVRule, IncompleteMapping, MapResult,
+from sdc_mapper import (DECLARED, JOIN, LOOKUP, LOST, NOT_REPRESENTABLE, EVRule, IncompleteMapping, MapResult,
                         MappingError, ValueOutcome, place)
 from sdcreader.record import EXCEPTIONAL_VALUES
 
@@ -46,8 +46,9 @@ class UBLMapper:
                 raise MappingError(f"UBL cannot say {code}: it has no null flavors, so an Exceptional Value is lost")
         placements, clusters = place(record, mapping)
         document = self._document(placements)
-        b = Builder(document)
+        b = Builder(document, mapping.cluster_order)
         notes: dict[int, str] = {}
+        later = []                      # writes through '=name' steps wait until every element they may join exists
         for p in placements:
             v = p.value
             if v.exceptional or p.omitted or p.rule is None or not p.steps:
@@ -55,14 +56,15 @@ class UBLMapper:
             if p.text is None:
                 notes[v.position] = p.note or "no value to write"
                 continue
-            node = b.put(p.steps, p.attribute, p.text, v.position)
-            for k, val in p.attributes.items():
-                node.attrs[k] = val
-            if p.units_attribute and p.units_text is not None:
-                node.attrs[p.units_attribute] = p.units_text
-            for e in p.extras:
-                if e.text is not None:
-                    b.put(e.steps, e.attribute, e.text)
+            writes = [(p.steps, p.attribute, p.text, v.position, p)]
+            writes += [(e.steps, e.attribute, e.text, None, None) for e in p.extras if e.text is not None]
+            for w in writes:
+                if any(key == JOIN for _, key in w[0]):
+                    later.append(w)
+                else:
+                    self._write(b, *w)
+        for w in later:
+            self._write(b, *w)
         for c in clusters:
             if c.attributes:
                 node = b.find(c.steps)
@@ -91,6 +93,14 @@ class UBLMapper:
             raise IncompleteMapping(f"mapping {mapping.id} has no rule for {len(missing)} value(s): " + "; ".join(missing[:5]))
         xml = etree.tostring(root, xml_declaration=True, encoding="UTF-8", pretty_print=True)
         return MapResult(files={f"{document}.xml": xml}, outcomes=outcomes, cannot_hold=list(CANNOT_HOLD))
+
+    @staticmethod
+    def _write(b, steps, attribute, text, position, p):
+        node = b.put(steps, attribute, text, position)
+        if p is not None:           # the value's own element: its constant attributes and its units
+            node.attrs.update(p.attributes)
+            if p.units_attribute and p.units_text is not None:
+                node.attrs[p.units_attribute] = p.units_text
 
     @staticmethod
     def _document(placements) -> str:

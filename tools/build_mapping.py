@@ -57,9 +57,14 @@ def main(name: str, sample: str, ct_id: str) -> int:
     for c, _ in reach:
         (clusters if c.sdc_type == "Cluster" else leaves).setdefault(c.label, set()).add(c.ct_id)
 
+    skipped = []
+
     def ids(table, label):
+        """The identifiers of the components with a label; a label this model does not use (a rule shared by every
+        library document) gives none, and is listed, so a misspelled label shows."""
         if label not in table:
-            raise SystemExit(f"{name}: no {'cluster' if table is clusters else 'component'} labeled {label!r} in the model")
+            skipped.append(f"{'cluster' if table is clusters else 'component'} {label!r}")
+            return []
         return sorted(table[label])
 
     lines = [
@@ -78,6 +83,7 @@ def main(name: str, sample: str, ct_id: str) -> int:
         label = entry.pop(kind)
         within = entry.pop("within", [])
         listuri = entry.pop("listURI", False)
+        iri_to = entry.pop("iri_to", None)       # a path that names the component itself, by its published IRI
         targets = ids(clusters if kind == "cluster" else leaves, label)
         contexts = list(itertools.product(*[ids(clusters, w) for w in within])) if within else [()]
         for target, ctx in itertools.product(targets, contexts):
@@ -87,6 +93,8 @@ def main(name: str, sample: str, ct_id: str) -> int:
             rule.update(entry)
             if listuri:   # the list a token travels with is the component itself, as published
                 rule["attributes"] = {**rule.get("attributes", {}), "listURI": f"{SDC4}mc-{target}"}
+            if iri_to:
+                rule["also"] = [*rule.get("also", []), {"to": iri_to, "transform": "constant", "value": f"{SDC4}mc-{target}"}]
             note = label + (f" (within {' > '.join(within)})" if within else "")
             lines.append(f"  # {note}")
             lines.append("  - " + yaml.safe_dump(rule, sort_keys=False, default_flow_style=True, width=10_000,
@@ -107,6 +115,8 @@ def main(name: str, sample: str, ct_id: str) -> int:
         if not omitted and mapping.rule_for(c.ct_id, c.sdc_type, above) is None:
             unreached.append(" / ".join(model.components[a].label for a in above[1:]) + f" / {c.label}")
     print(f"{out.relative_to(ROOT)}: {count} rules")
+    if skipped:
+        print(f"  labels not in this model (no rule written): {', '.join(sorted(set(skipped)))}")
     if unreached:
         print(f"{len(unreached)} value(s) reach no rule:")
         for u in unreached:

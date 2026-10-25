@@ -1,0 +1,439 @@
+# Credit Note (business documents library) to OASIS UBL 2.3 CreditNote
+# Written by tools/build_mapping.py from tools/specs/credit_note.py; labels in the comments.
+mapping:
+  id: credit-note-ubl-2.3
+  version: 1
+  author: Axius SDC, Inc.
+  date: '2026-10-25'
+  description: 'The Credit Note model''s values in a UBL 2.3 CreditNote. Declared: the library links its components to UBL''s
+    aggregates, not to each basic component. The payment means and allowance charge reason codes are the model''s own bindings
+    to UBL''s code lists.'
+model:
+  ct_id: jkuyr38hydqaiwlq5vhp2rjr
+  schema_sha256: 29f7948826d3380b5cacebc767c16a3012c7cadfd78ce79db690035adfd5ef2a
+target:
+  name: OASIS UBL
+  version: '2.3'
+rules:
+  # Credit Note Governed Record
+  - {cluster: eqika8chjyab0nbkqcoyrtce, to: CreditNote}
+  # Credit Note
+  - {cluster: vkn71t5d3juhuwqg61cszc1m, to: .}
+  # Audit Event
+  - {cluster: t2tvd3wylxrstdeu5aw6gkw1, to: '-', transform: omit, reason: 'the record''s audit event: UBL has no place for it'}
+  # PROV Activity
+  - {cluster: vmikfu0irht9fmq7q02t3oqs, to: '-', transform: omit, reason: 'the record''s provenance: UBL has no place for it'}
+  # PROV Agent
+  - {cluster: c179ilk2ns15cd5rzzdfd6f6, to: '-', transform: omit, reason: 'the record''s provenance: UBL has no place for it'}
+  # PROV Entity
+  - {cluster: q0ckidtsg1x3iav6nrt8fo0l, to: '-', transform: omit, reason: 'the record''s provenance: UBL has no place for it'}
+  # Credit Note Document
+  - {cluster: cu806puv1eksttp9z2wy3ytd, to: .}
+  # Customization ID
+  - {component: rgnvj03kjtej1s8brdeil4kq, to: 'cbc:CustomizationID', transform: copy}
+  # Profile ID
+  - {component: ato2r6lpk92i9e5djcwrna74, to: 'cbc:ProfileID', transform: copy}
+  # Profile Execution ID
+  - {component: blz32vkqw11awazaklpdih7b, to: 'cbc:ProfileExecutionID', transform: copy}
+  # Copy Indicator
+  - {component: nsv2eblxq8s0vk28ue2vh1fl, to: 'cbc:CopyIndicator', transform: copy}
+  # Document UUID
+  - {component: wa674d96vzd8um4nwbtjrorz, to: 'cbc:UUID', transform: copy}
+  # Issue Date
+  - {component: tkd16hhh9wbn0qya2ykm0552, to: 'cbc:IssueDate', transform: copy}
+  # Issue Time
+  - {component: oybfzltffyfioix1zdblxcp3, to: 'cbc:IssueTime', transform: copy}
+  # Note
+  - {component: zvkk8ztob9gmrvvkzyibyrzk, to: 'cbc:Note', transform: copy}
+  # Document Currency
+  - {component: xywkj11p7u8jhjaiim3h3gyp, to: 'cbc:DocumentCurrencyCode', transform: copy}
+  # Pricing Currency
+  - {component: a3o0vyby3nousr4jhtlsddn9, to: 'cbc:PricingCurrencyCode', transform: copy}
+  # Accounting Cost
+  - {component: jy2iyemtj9qmi8rvmzu1xw2f, to: 'cbc:AccountingCost', transform: copy}
+  # Line Count
+  - {component: c1c7iydc13os47ppwwtwsnum, to: 'cbc:LineCountNumeric', transform: copy}
+  # Date Range
+  - {cluster: ru9u47yxhe337pslpxm6cflx, to: .}
+  # Date Range Start
+  - {component: bcyjfdwobh9q60umle1amw0w, to: 'cbc:StartDate', transform: copy}
+  # Date Range End
+  - {component: moo2lije2b05ylq8q4t52lcb, to: 'cbc:EndDate', transform: copy}
+  # Credit Note ID
+  - {component: tnapfsz8ytrxb7oqk54ju0r7, to: 'cbc:ID', transform: copy}
+  # Due Date
+  - {component: izmk5n12dei1ocsv7dms9i99, to: 'cbc:DueDate', transform: copy}
+  # Credit Note Type
+  - {component: quhtguex1ms7x4ghlg0ellk3, to: 'cbc:CreditNoteTypeCode', transform: copy, attributes: {listURI: 'https://semanticdatacharter.com/ns/sdc4/mc-quhtguex1ms7x4ghlg0ellk3'}}
+  # Tax Point Date
+  - {component: wc6bib746nf7du213xlzousz, to: 'cbc:TaxPointDate', transform: copy}
+  # Tax Currency
+  - {component: ftby5cu9ote7glq4chdq7iml, to: 'cbc:TaxCurrencyCode', transform: copy}
+  # Payment Currency
+  - {component: dke6vuqm4c79e6hlnqo9kz6k, to: 'cbc:PaymentCurrencyCode', transform: copy}
+  # Buyer Reference
+  - {component: yzdm2ldib2w5nqattpealocf, to: 'cbc:BuyerReference', transform: copy}
+  # Document Status
+  - {component: mnuyvuxqsy0qskx8hiy6epff, to: '-', transform: omit, reason: UBL's CreditNote carries no document status}
+  # Invoice Period
+  - {cluster: lxcfaaj41jaqhetpy8ekmvwj, to: 'cac:InvoicePeriod'}
+  # Discrepancy Response
+  - {cluster: k6uz3epl9cx9qi82wvqy2x62, to: 'cac:DiscrepancyResponse'}
+  # Discrepancy Reference ID
+  - {component: wqofh61h0u2y7hbh1ago8p0x, to: 'cbc:ReferenceID', transform: copy}
+  # Discrepancy Response Code
+  - {component: o5flyzualxgjq0t6ohcreefx, to: 'cbc:ResponseCode', transform: copy}
+  # Discrepancy Description
+  - {component: bwe98nxxki0ubggnyocrbf81, to: 'cbc:Description', transform: copy}
+  # Discrepancy Effective Date
+  - {component: lobcz6jauu9a06dcu09holtm, to: 'cbc:EffectiveDate', transform: copy}
+  # Order Reference
+  - {cluster: zj2hjn6wx3dfa0h5vlzeexhw, to: 'cac:OrderReference'}
+  # Order ID
+  - {component: wtnd4hzyrntlwtp4z3l1gcpr, to: 'cbc:ID', transform: copy}
+  # Sales Order ID
+  - {component: mllhwxhu0zvxhwt32em2t821, to: 'cbc:SalesOrderID', transform: copy}
+  # Order Type
+  - {component: q9k20amngqerxvhpvhwn9t3q, to: 'cbc:OrderTypeCode', transform: copy, attributes: {listURI: 'https://semanticdatacharter.com/ns/sdc4/mc-q9k20amngqerxvhpvhwn9t3q'}}
+  # Billing Reference
+  - {cluster: c9trmbywa8czks1lo7tl6wf4, to: 'cac:BillingReference'}
+  # Invoice Document Reference
+  - {cluster: nfzgoofnuo7i47mo0pv6180n, to: 'cac:InvoiceDocumentReference'}
+  # Despatch Document Reference
+  - {cluster: ulo971f5gnqane7k9pd5iog3, to: 'cac:DespatchDocumentReference'}
+  # Receipt Document Reference
+  - {cluster: qhpvwltqz9t7ruv372qp7u5o, to: 'cac:ReceiptDocumentReference'}
+  # Document Reference
+  - {cluster: ouhl662e9dzv99ng02kotdsx, to: .}
+  # Document Reference
+  - {cluster: uk03ahua6zv9d0i5tqq5qzmh, to: .}
+  # Originator Document Reference
+  - {cluster: fzqzhzcv7z3plh5c3n90m4e9, to: 'cac:OriginatorDocumentReference'}
+  # Additional Document Reference
+  - {cluster: m1cppki3rm9et0bhz1lej8l7, to: 'cac:AdditionalDocumentReference'}
+  # Line Document Reference
+  - {cluster: ed2ps98xb93s24el1z94lx7x, to: 'cac:DocumentReference'}
+  # Document Reference ID
+  - {component: k153quyn7i9ravd1b3c61ad9, to: 'cbc:ID', transform: copy}
+  # Document Reference Issue Date
+  - {component: ncxchb14dkm790w4rnuzafju, to: 'cbc:IssueDate', transform: copy}
+  # Document Type
+  - {component: arra8d8x6kv6l5mluiomye3t, to: 'cbc:DocumentType', transform: copy}
+  # Document Type
+  - {component: hyw1higymybzar9tv2ze77xa, to: 'cbc:DocumentType', transform: copy}
+  # Document Description
+  - {component: z181ta9jftxc7k63rv4nz1zv, to: 'cbc:DocumentDescription', transform: copy}
+  # Contract ID
+  - {component: ksr1tl7okjcyf18nprakncw7, to: 'cbc:ID', transform: copy}
+  # Contract Issue Date
+  - {component: nvna1bzcdyspz7k40coxn5y7, to: 'cbc:IssueDate', transform: copy}
+  # Contract
+  - {cluster: t2n35sdg0xy8ria7ixcb464z, to: 'cac:ContractDocumentReference'}
+  # Contract Type
+  - {component: r4yktyzzaxury9xsfdw788tj, to: 'cbc:DocumentType', transform: copy}
+  # Accounting Supplier Party
+  - {cluster: f3duci830odmou614vn1rpgu, to: 'cac:AccountingSupplierParty'}
+  # Payee Party
+  - {cluster: anpufgp9b2pqetblqffkfggy, to: 'cac:PayeeParty'}
+  # Tax Representative Party
+  - {cluster: fmybhv0a3jnnca8z2z73yuoq, to: 'cac:TaxRepresentativeParty'}
+  # Party (within Payee Party)
+  - {cluster: useph7s4ienfhwerqx2thedj, within: [anpufgp9b2pqetblqffkfggy], to: .}
+  # Party (within Tax Representative Party)
+  - {cluster: useph7s4ienfhwerqx2thedj, within: [fmybhv0a3jnnca8z2z73yuoq], to: .}
+  # Supplier Party
+  - {cluster: utcj07ovkb7ntkbq8ix0ro4l, to: .}
+  # Customer Party
+  - {cluster: asbbdn0eof6713wx4y2e90c2, to: .}
+  # Customer Assigned Account ID
+  - {component: ybdlctks32zkkteycr5y1eq8, to: 'cbc:CustomerAssignedAccountID', transform: copy}
+  # Supplier Assigned Account ID
+  - {component: nhvx21mf5ac81670xyrpwbaz, to: 'cbc:SupplierAssignedAccountID', transform: copy}
+  # Accounting Customer Party
+  - {cluster: iswfl2vzv0f9ctm5rjxa3ums, to: 'cac:AccountingCustomerParty'}
+  # Buyer Customer Party
+  - {cluster: nylve3b8ss572vh8zso2u4l7, to: 'cac:BuyerCustomerParty'}
+  # Seller Supplier Party
+  - {cluster: xkkk5vyegpy4xdig8vnabstc, to: 'cac:SellerSupplierParty'}
+  # Delivery Party
+  - {cluster: j5s0gw9dabkpb7hc8r0wiu8o, to: 'cac:DeliveryParty'}
+  # Party
+  - {cluster: useph7s4ienfhwerqx2thedj, to: 'cac:Party'}
+  # Party (within Delivery Party)
+  - {cluster: useph7s4ienfhwerqx2thedj, within: [j5s0gw9dabkpb7hc8r0wiu8o], to: .}
+  # Endpoint ID
+  - {component: fpb149j9um0l676icmhyp56d, to: 'cbc:EndpointID', transform: copy}
+  # Party Identification
+  - {cluster: z0gdpy67iot29gdc2zq2v1jj, to: 'cac:PartyIdentification'}
+  # Party Identification Value
+  - {component: iwxh8exsn4qb6eyetfbwqvmj, to: 'cbc:ID', transform: copy}
+  # Party Identification Scheme
+  - {component: c9v9nkkg6b8sixoaf55vyjrn, to: 'cbc:ID/@schemeName', transform: copy, also: [{to: 'cbc:ID/@schemeID', transform: code, table: {Global Location Number (GS1): GLN, DUNS number: DUNS}, on_miss: omit}, {to: 'cbc:ID/@schemeAgencyID', transform: code, table: {Global Location Number (GS1): '9', DUNS number: '16'}, on_miss: omit}]}
+  # Organization Name
+  - {component: xcn8r67fg7soty17homzok44, to: 'cac:PartyName/cbc:Name', transform: copy}
+  # US Address
+  - {cluster: jqgvof35d7y83wkfcgiic5em, to: 'cac:PostalAddress'}
+  # International Address
+  - {cluster: upawqojmcfg3qsf4ffzi47ho, to: 'cac:PostalAddress'}
+  # US Address (within Delivery Location)
+  - {cluster: jqgvof35d7y83wkfcgiic5em, within: [p4s8c066xzhex2ibiy6nwv4r], to: 'cac:Address'}
+  # International Address (within Delivery Location)
+  - {cluster: upawqojmcfg3qsf4ffzi47ho, within: [p4s8c066xzhex2ibiy6nwv4r], to: 'cac:Address'}
+  # Address Use
+  - {component: b25dj42zxhm19pih328ga8pl, to: 'cbc:AddressTypeCode', transform: copy, attributes: {listURI: 'https://semanticdatacharter.com/ns/sdc4/mc-b25dj42zxhm19pih328ga8pl'}}
+  # Address (Line 1)
+  - {component: ncxxt7wgs7soxw7kbmapxvg3, to: 'cbc:StreetName', transform: copy}
+  # Address (Line 2)
+  - {component: sexw93x5276zwsn1qx15htpv, to: 'cbc:AdditionalStreetName', transform: copy}
+  # City Name
+  - {component: toysvef93azt57fgh8rwpd4b, to: 'cbc:CityName', transform: copy}
+  # US ZIP Code
+  - {component: cjzq0xnrm0uu8p1h51koheoz, to: 'cbc:PostalZone', transform: copy}
+  # Postal Code
+  - {component: gf841eedvv6cjiegs934srai, to: 'cbc:PostalZone', transform: copy}
+  # US State Code
+  - {component: k9tqm489kilg33mx4cibyto6, to: 'cbc:CountrySubentityCode', transform: copy}
+  # Region Name
+  - {component: jw1b9q6ulyte599sdsqp2mvp, to: 'cbc:CountrySubentity', transform: copy}
+  # Country Code ISO 3166
+  - {component: f2jicaigehz7xmwcp1gm5gh0, to: 'cac:Country/cbc:IdentificationCode', transform: copy}
+  # Party Legal Entity
+  - {cluster: cslzdtawth1xxjjslf1975qt, to: 'cac:PartyLegalEntity'}
+  # Registration Name
+  - {component: ev7lhh4t59tt8ot0tfoaztb6, to: 'cbc:RegistrationName', transform: copy}
+  # Company ID
+  - {component: axizk9c3k82w84p1t1wkwayu, to: 'cbc:CompanyID', transform: copy}
+  # Party Contact
+  - {cluster: kibeh8vp79shumcdyj8xzqw1, to: 'cac:Contact'}
+  # Contact Point
+  - {cluster: d2xwhnb2vqzxw70jcizj9csx, to: .}
+  # Contact Name
+  - {component: fp533gyfb6yatp6jgpg2emb2, to: 'cbc:Name', transform: copy}
+  # Contact Job Title
+  - {component: ozkpv9buivm77ozkybm0ww39, to: 'cbc:JobTitle', transform: copy}
+  # Contact Department
+  - {component: bkw6awwe7kp01kowlwbgn21b, to: 'cbc:Department', transform: copy}
+  # Phone Number
+  - {component: zpfwg52r88j6jdypj7rg71ke, to: 'cbc:Telephone', transform: copy}
+  # Fax Number
+  - {component: ll6ltsnvakomixuitxkbkxfz, to: 'cbc:Telefax', transform: copy}
+  # Email Address
+  - {component: q922mqaon3yn5zlwf2bszf28, to: 'cbc:ElectronicMail', transform: copy}
+  # Website URL
+  - {component: wriny2gz8aqcvffmfpwbompk, to: '../cbc:WebsiteURI', transform: copy}
+  # Contact Method
+  - {component: miqo30r5b554nyj7ubryw43x, to: '-', transform: omit, reason: UBL's Contact has no contact method}
+  # Contact Use
+  - {component: vmruk4j9y1orvvz8cwafrax5, to: '-', transform: omit, reason: UBL's Contact has no contact use}
+  # Delivery
+  - {cluster: sy3rqkwaui6b7gfjbqxb15wt, to: 'cac:Delivery'}
+  # Delivery ID
+  - {component: xxnvc50tm2l6hqejitd5lalh, to: 'cbc:ID', transform: copy}
+  # Delivery Quantity
+  - {component: mgt29p1un237uma77q8ay8or, to: 'cbc:Quantity', transform: copy, units: {to: '@unitCode', transform: copy}}
+  # Latest Delivery Date
+  - {component: z180eu0o81qv2cfgjejo5unw, to: 'cbc:LatestDeliveryDate', transform: copy}
+  # Delivery Location
+  - {cluster: p4s8c066xzhex2ibiy6nwv4r, to: 'cac:DeliveryLocation'}
+  # Delivery Location ID
+  - {component: lpixlk20bads9j3ggtte22px, to: 'cbc:ID', transform: copy}
+  # Delivery Location Name
+  - {component: ude1r385xvd2002r5h851vwk, to: 'cbc:Name', transform: copy}
+  # Requested Delivery Period
+  - {cluster: oyxla2t2d4hxnbqwhchvjcyf, to: 'cac:RequestedDeliveryPeriod'}
+  # Delivery Terms
+  - {cluster: u9i76tpl2wkhlbncvcayuo1r, to: 'cac:DeliveryTerms'}
+  # Delivery Terms Code
+  - {component: w8xglen3ypxximnzzjzsvm5u, to: 'cbc:ID', transform: copy, attributes: {schemeName: Incoterms 2020}}
+  # Delivery Special Terms
+  - {component: pfag6soto6wul7frsg8bt8rv, to: 'cbc:SpecialTerms', transform: copy}
+  # Payment Means Instruction
+  - {cluster: pnpbq6767i7i05afp648yhdd, to: 'cac:PaymentMeans'}
+  # Payment Means
+  - {component: pv15bnowaxjtczx4wx4vit4d, to: 'cbc:PaymentMeansCode', transform: binding, prefix: 'http://docs.oasis-open.org/ubl/os-UBL-2.3/cl/gc/default/PaymentMeansCode-2.3.gc', also: [{to: 'cbc:PaymentMeansCode/@name', transform: copy}]}
+  # Payment Due Date
+  - {component: iw79shpxfxnmiueutlhubpr2, to: 'cbc:PaymentDueDate', transform: copy}
+  # Note (within Payment Means Instruction)
+  - {component: zvkk8ztob9gmrvvkzyibyrzk, within: [pnpbq6767i7i05afp648yhdd], to: 'cbc:InstructionNote', transform: copy}
+  # Payment Terms
+  - {cluster: jje6lh4symzgvm04292t44o2, to: 'cac:PaymentTerms'}
+  # Payment Terms ID
+  - {component: q439xnetx63djdu56tw5e0jm, to: 'cbc:ID', transform: copy}
+  # Settlement Discount Percent
+  - {component: ng30ck36wgei6bmx79qxy3xm, to: 'cbc:SettlementDiscountPercent', transform: copy}
+  # Penalty Surcharge Percent
+  - {component: erekzvcx8ierm1tneaiuv109, to: 'cbc:PenaltySurchargePercent', transform: copy}
+  # Settlement Period
+  - {cluster: e01bi01ugxeef1gqc5litkki, to: 'cac:SettlementPeriod'}
+  # Allowance Charge
+  - {cluster: gp9qg9erknbjn0quld92syla, to: 'cac:AllowanceCharge'}
+  # Charge Indicator
+  - {component: wf9pzmcdm06vu2l3usnfkdp0, to: 'cbc:ChargeIndicator', transform: copy}
+  # Allowance Charge Reason
+  - {component: dmk3uu59n8dpdso1vw6jhif5, to: 'cbc:AllowanceChargeReasonCode', transform: binding, prefix: 'http://docs.oasis-open.org/ubl/os-UBL-2.3/cl/gc/default/AllowanceChargeReasonCode-2.3.gc', also: [{to: 'cbc:AllowanceChargeReasonCode/@name', transform: copy}]}
+  # Allowance Charge Reason Text
+  - {component: n3v2ahdss6egqpmdmgd77de8, to: 'cbc:AllowanceChargeReason', transform: copy}
+  # Multiplier Factor
+  - {component: ak6fih808akzuax3o6btb8lz, to: 'cbc:MultiplierFactorNumeric', transform: copy}
+  # Allowance Charge Amount
+  - {component: mlog5q5v5rmcnry4n07m63m6, to: 'cbc:Amount', transform: copy, units: {to: '@currencyID', transform: copy}}
+  # Base Amount
+  - {component: qosequlh47qfvr6d5nzn9gh8, to: 'cbc:BaseAmount', transform: copy, units: {to: '@currencyID', transform: copy}}
+  # Tax Total
+  - {cluster: yat9nppabvpq1jrgpsi5g226, to: 'cac:TaxTotal'}
+  # Tax Amount
+  - {component: gi49b158luigt4x2bhhbnux0, to: 'cbc:TaxAmount', transform: copy, units: {to: '@currencyID', transform: copy}}
+  # Tax Subtotal
+  - {cluster: w4pmewp5mgp43q2k0p4bmyfw, to: 'cac:TaxSubtotal'}
+  # Taxable Amount
+  - {component: cx5gdd7pofanddbh9yaf53xl, to: 'cbc:TaxableAmount', transform: copy, units: {to: '@currencyID', transform: copy}}
+  # Tax Category
+  - {cluster: f3hxcmvvq1jtowruh5y3evhc, to: 'cac:TaxCategory'}
+  # Tax Category (within Item)
+  - {cluster: f3hxcmvvq1jtowruh5y3evhc, within: [g1mdkay36qkfgmtv4lvsqe4x], to: 'cac:ClassifiedTaxCategory'}
+  # Tax Category ID
+  - {component: p6c7q343dafqwvcq6m1ffz5i, to: 'cbc:ID', transform: copy}
+  # Tax Category Name
+  - {component: ehh24wvyu4fsa3rbeheft3kj, to: 'cbc:Name', transform: copy}
+  # Tax Percent
+  - {component: v4zn5xtqlkni8qr3ly7e2j1a, to: 'cbc:Percent', transform: copy}
+  # Tax Scheme
+  - {cluster: u23p2mgw0aw90lu5eh3o2ix0, to: 'cac:TaxScheme'}
+  # Tax Scheme ID
+  - {component: mexx9mfi4rglmgi71nqf37ux, to: 'cbc:ID', transform: copy}
+  # Tax Scheme Name
+  - {component: g7952fbwz8uh2ig9uidu9877, to: 'cbc:Name', transform: copy}
+  # Withholding Tax Total
+  - {cluster: vbhwnih68qljrm0xff5cm6b5, to: 'cac:WithholdingTaxTotal'}
+  # Tax Total (within Withholding Tax Total)
+  - {cluster: yat9nppabvpq1jrgpsi5g226, within: [vbhwnih68qljrm0xff5cm6b5], to: .}
+  # Legal Monetary Total
+  - {cluster: aqajprszm8ykn1u919442rpw, to: 'cac:LegalMonetaryTotal'}
+  # Line Extension Total Amount
+  - {component: zoqvpnsbbfcs2ma5ah6srf27, to: 'cbc:LineExtensionAmount', transform: copy, units: {to: '@currencyID', transform: copy}}
+  # Tax Exclusive Amount
+  - {component: fddz3gxz8pjvgxmymmma54jp, to: 'cbc:TaxExclusiveAmount', transform: copy, units: {to: '@currencyID', transform: copy}}
+  # Tax Inclusive Amount
+  - {component: oqk5mad2efz8sg444h8pis0e, to: 'cbc:TaxInclusiveAmount', transform: copy, units: {to: '@currencyID', transform: copy}}
+  # Allowance Total Amount
+  - {component: imolx6ui92t4lv1ise4tue7b, to: 'cbc:AllowanceTotalAmount', transform: copy, units: {to: '@currencyID', transform: copy}}
+  # Charge Total Amount
+  - {component: akme82vh7v2fvgnrht228b5h, to: 'cbc:ChargeTotalAmount', transform: copy, units: {to: '@currencyID', transform: copy}}
+  # Prepaid Amount
+  - {component: oeoory19276gd0hy5m521d8p, to: 'cbc:PrepaidAmount', transform: copy, units: {to: '@currencyID', transform: copy}}
+  # Payable Rounding Amount
+  - {component: dj7znans3l4hdl28mux0vc5s, to: 'cbc:PayableRoundingAmount', transform: copy, units: {to: '@currencyID', transform: copy}}
+  # Payable Amount
+  - {component: axifzu4nt8m8n4qpfn838yy8, to: 'cbc:PayableAmount', transform: copy, units: {to: '@currencyID', transform: copy}}
+  # Credit Note Lines
+  - {cluster: gxndnrq7p8irahxlef9ytakb, to: .}
+  # Credit Note Line 1
+  - {cluster: yko4thjau27yl7bjicqa8hzk, to: ., order: 1}
+  # Credit Note Line 2
+  - {cluster: fuv8wp3wcvj3rz8g10p2n81c, to: ., order: 2}
+  # Credit Note Line 3
+  - {cluster: n537oz6ujpxcimscrs14x6oo, to: ., order: 3}
+  # Credit Note Line 4
+  - {cluster: te7535l36ak3s8dod85ra7kn, to: ., order: 4}
+  # Credit Note Line 5
+  - {cluster: tm2e57ifq68bgq830ds4mm30, to: ., order: 5}
+  # Credit Note Line 6
+  - {cluster: v3x938geu5m2m23ve0tayl44, to: ., order: 6}
+  # Credit Note Line 7
+  - {cluster: ygxs4x747fplwzv0ecvtitl3, to: ., order: 7}
+  # Credit Note Line 8
+  - {cluster: lkmt38ckbokv2ihxn7gn4h2y, to: ., order: 8}
+  # Credit Note Line 9
+  - {cluster: w6n9k323img7a2n6a9pwki96, to: ., order: 9}
+  # Credit Note Line 10
+  - {cluster: ig8fnfz3voa7pso5x3hyofec, to: ., order: 10}
+  # Credit Note Line
+  - {cluster: ilnb30g9dumsn2peazfupz95, to: 'cac:CreditNoteLine'}
+  # Line ID
+  - {component: qnymhn26y7zfy7jav1pi3dqi, to: 'cbc:ID', transform: copy}
+  # Line Extension Amount
+  - {component: q2fgdapi4r5d406rbiuuwomp, to: 'cbc:LineExtensionAmount', transform: copy, units: {to: '@currencyID', transform: copy}}
+  # Line Status
+  - {component: sb5gat3jakjg1j6m78nq79in, to: 'cbc:LineStatusCode', transform: copy, attributes: {listURI: 'https://semanticdatacharter.com/ns/sdc4/mc-sb5gat3jakjg1j6m78nq79in'}}
+  # Item
+  - {cluster: g1mdkay36qkfgmtv4lvsqe4x, to: 'cac:Item'}
+  # Item Description
+  - {component: k0n1pwt88vd4e97alxtobizg, to: 'cbc:Description', transform: copy}
+  # Pack Quantity
+  - {component: reydo3ozx3ie5sit1rfwsoc4, to: 'cbc:PackQuantity', transform: copy}
+  # Pack Size
+  - {component: zf1gwuh6jx7iyy2w0aam4plx, to: 'cbc:PackSizeNumeric', transform: copy}
+  # Item Name
+  - {component: iz74r6dn6ud4wqb2jsr8b82y, to: 'cbc:Name', transform: copy}
+  # Brand Name
+  - {component: z2hiu8mpip80cq23km4fggwr, to: 'cbc:BrandName', transform: copy}
+  # Model Name
+  - {component: lgcfrui3pdx1rhceu488rxyy, to: 'cbc:ModelName', transform: copy}
+  # Buyer's Item Identification
+  - {cluster: a80v6wq587y2fbws71tku996, to: 'cac:BuyersItemIdentification'}
+  # Seller's Item Identification
+  - {cluster: q597i0tjhythg66t0hrgzuny, to: 'cac:SellersItemIdentification'}
+  # Manufacturer's Item Identification
+  - {cluster: u7d337s016i2dotve10nec4c, to: 'cac:ManufacturersItemIdentification'}
+  # Standard Item Identification
+  - {cluster: y4wy0qhkvx503a4llnzx1fg2, to: 'cac:StandardItemIdentification'}
+  # Item Identification
+  - {cluster: cqqaghmjayj4vo9qv1xv2ezv, to: .}
+  # Item Identification Value
+  - {component: db1bt3xlh3m1jpvnmesx480v, to: 'cbc:ID', transform: copy}
+  # Item Identification Scheme
+  - {component: k84kh4trdynaoi242c268lat, to: 'cbc:ID/@schemeName', transform: copy, also: [{to: 'cbc:ID/@schemeID', transform: code, table: {Global Trade Item Number (GS1): GTIN}, on_miss: omit}, {to: 'cbc:ID/@schemeAgencyID', transform: code, table: {Global Trade Item Number (GS1): '9'}, on_miss: omit}]}
+  # Item Extended ID
+  - {component: span8j8v0dghr4rjnit4s5uh, to: 'cbc:ExtendedID', transform: copy}
+  # Commodity Classification
+  - {cluster: ku29eiis39dbz3td95f2x5ng, to: 'cac:CommodityClassification'}
+  # Commodity Code
+  - {component: lx0s1wl1avkrf61p5j3135bn, to: 'cbc:CommodityCode', transform: copy}
+  # Item Classification Code
+  - {component: aeu7ruba5it242eejjc653r9, to: 'cbc:ItemClassificationCode', transform: copy}
+  # Item Dimensions
+  - {cluster: mnrjznltm3hkmgtepxraj8ix, to: .}
+  # Length/Distance
+  - {component: vl0xhkn7z4gkgq5j2psifiil, to: '+cac:Dimension/cbc:Measure', transform: copy, units: {to: '@unitCode', transform: code, table: {mm: MMT, cm: CMT, m: MTR, km: KMT, mg: MGM, g: GRM, kg: KGM, mL: MLT, L: LTR, °C: CEL, K: KEL}}, also: [{to: '+cac:Dimension/cbc:AttributeID', transform: constant, value: Length}]}
+  # Weight
+  - {component: cc2p4vt57qgbdttxkngwhv93, to: '+cac:Dimension/cbc:Measure', transform: copy, units: {to: '@unitCode', transform: code, table: {mm: MMT, cm: CMT, m: MTR, km: KMT, mg: MGM, g: GRM, kg: KGM, mL: MLT, L: LTR, °C: CEL, K: KEL}}, also: [{to: '+cac:Dimension/cbc:AttributeID', transform: constant, value: Weight}]}
+  # Volume
+  - {component: pkye7oq6g55daxxjtbiwe7uv, to: '+cac:Dimension/cbc:Measure', transform: copy, units: {to: '@unitCode', transform: code, table: {mm: MMT, cm: CMT, m: MTR, km: KMT, mg: MGM, g: GRM, kg: KGM, mL: MLT, L: LTR, °C: CEL, K: KEL}}, also: [{to: '+cac:Dimension/cbc:AttributeID', transform: constant, value: Volume}]}
+  # Price
+  - {cluster: cfyo90kf2i12yi4q6tfz096p, to: 'cac:Price'}
+  # Price Amount
+  - {component: xmhraye8g23oss82ihfmwjkd, to: 'cbc:PriceAmount', transform: copy, units: {to: '@currencyID', transform: copy}}
+  # Base Quantity
+  - {component: ivmsm0wfok9g4chzb0gryzqy, to: 'cbc:BaseQuantity', transform: copy, units: {to: '@unitCode', transform: copy}}
+  # Price Type
+  - {component: n2bk18wxzh5oggb19qgrbo3t, to: 'cbc:PriceTypeCode', transform: copy, attributes: {listURI: 'https://semanticdatacharter.com/ns/sdc4/mc-n2bk18wxzh5oggb19qgrbo3t'}}
+  # Price Validity Period
+  - {cluster: nf09mmhkifwsik543zulj8b0, to: 'cac:ValidityPeriod'}
+  # Credited Quantity
+  - {component: fyv04qqt334geqxungef4kfi, to: 'cbc:CreditedQuantity', transform: copy, units: {to: '@unitCode', transform: copy}}
+  # Tax Inclusive Line Extension Amount
+  - {component: dzsmbbloyp19dbgy6j1maz1q, to: 'cbc:TaxInclusiveLineExtensionAmount', transform: copy, units: {to: '@currencyID', transform: copy}}
+  # Free of Charge
+  - {component: ko11zu0n8anavb1ovyib9xyf, to: 'cbc:FreeOfChargeIndicator', transform: copy}
+  # Order Line Reference
+  - {cluster: c3qfzlybvce95akizb8gcbtw, to: 'cac:OrderLineReference'}
+  # Despatch Line Reference
+  - {cluster: l1irc9h6y2rjq65ayrg1v62o, to: 'cac:DespatchLineReference'}
+  # Receipt Line Reference
+  - {cluster: wxur4evykjxss5wlhc0pa32e, to: 'cac:ReceiptLineReference'}
+  # Line ID (within Order Line Reference)
+  - {component: qnymhn26y7zfy7jav1pi3dqi, within: [c3qfzlybvce95akizb8gcbtw], to: 'cbc:LineID', transform: copy}
+  # Line ID (within Despatch Line Reference)
+  - {component: qnymhn26y7zfy7jav1pi3dqi, within: [l1irc9h6y2rjq65ayrg1v62o], to: 'cbc:LineID', transform: copy}
+  # Line ID (within Receipt Line Reference)
+  - {component: qnymhn26y7zfy7jav1pi3dqi, within: [wxur4evykjxss5wlhc0pa32e], to: 'cbc:LineID', transform: copy}
+  # Sales Order Line ID
+  - {component: vzzejwis0nptpcqf5t5rb9sl, to: 'cbc:SalesOrderLineID', transform: copy}
+  # Document Reference (within Despatch Line Reference)
+  - {cluster: ouhl662e9dzv99ng02kotdsx, within: [l1irc9h6y2rjq65ayrg1v62o], to: 'cac:DocumentReference'}
+  # Document Reference (within Despatch Line Reference)
+  - {cluster: uk03ahua6zv9d0i5tqq5qzmh, within: [l1irc9h6y2rjq65ayrg1v62o], to: 'cac:DocumentReference'}
+  # Document Reference (within Receipt Line Reference)
+  - {cluster: ouhl662e9dzv99ng02kotdsx, within: [wxur4evykjxss5wlhc0pa32e], to: 'cac:DocumentReference'}
+  # Document Reference (within Receipt Line Reference)
+  - {cluster: uk03ahua6zv9d0i5tqq5qzmh, within: [wxur4evykjxss5wlhc0pa32e], to: 'cac:DocumentReference'}

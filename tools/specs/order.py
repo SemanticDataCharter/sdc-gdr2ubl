@@ -46,7 +46,7 @@ RULES = [
     *monetary_total("Anticipated Monetary Total", "cac:AnticipatedMonetaryTotal"),
 
     C("Order Lines", "."),
-    *[C(f"Order Line {n}", ".") for n in range(1, 11)],
+    *[C(f"Order Line {n}", ".", order=n) for n in range(1, 11)],
     C("Order Line", "cac:OrderLine"),
     C("Line Item", "cac:LineItem"),
     *ITEM_AND_PRICE,

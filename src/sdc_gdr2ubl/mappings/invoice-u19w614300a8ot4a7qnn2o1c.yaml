@@ -330,25 +330,25 @@ rules:
   # Invoice Lines
   - {cluster: lqvti95foq5nmpgg4us5d08m, to: .}
   # Invoice Line 1
-  - {cluster: pvcuumel6sn0d3ntyl3dw55d, to: .}
+  - {cluster: pvcuumel6sn0d3ntyl3dw55d, to: ., order: 1}
   # Invoice Line 2
-  - {cluster: t8vxds2ocgtdxk5zge6cjyxe, to: .}
+  - {cluster: t8vxds2ocgtdxk5zge6cjyxe, to: ., order: 2}
   # Invoice Line 3
-  - {cluster: tt7vd3wbb6qyuuk5nz9mvrk1, to: .}
+  - {cluster: tt7vd3wbb6qyuuk5nz9mvrk1, to: ., order: 3}
   # Invoice Line 4
-  - {cluster: at84f347n2tcv55ol06wyfie, to: .}
+  - {cluster: at84f347n2tcv55ol06wyfie, to: ., order: 4}
   # Invoice Line 5
-  - {cluster: t979wv49kipa8tomo99iaf8d, to: .}
+  - {cluster: t979wv49kipa8tomo99iaf8d, to: ., order: 5}
   # Invoice Line 6
-  - {cluster: pw8ybnc02e8cn5dgr9sdxpql, to: .}
+  - {cluster: pw8ybnc02e8cn5dgr9sdxpql, to: ., order: 6}
   # Invoice Line 7
-  - {cluster: rl99muluptuf28lebfwsxp9z, to: .}
+  - {cluster: rl99muluptuf28lebfwsxp9z, to: ., order: 7}
   # Invoice Line 8
-  - {cluster: fjbpcliwnk6155ds2ggqjgue, to: .}
+  - {cluster: fjbpcliwnk6155ds2ggqjgue, to: ., order: 8}
   # Invoice Line 9
-  - {cluster: akk5ncts3xazjdhdb9rk5j4p, to: .}
+  - {cluster: akk5ncts3xazjdhdb9rk5j4p, to: ., order: 9}
   # Invoice Line 10
-  - {cluster: lbju0lph5trgm5z9wkru9q1l, to: .}
+  - {cluster: lbju0lph5trgm5z9wkru9q1l, to: ., order: 10}
   # Invoice Line
   - {cluster: sg30zpa8nw143kctvpulzo0a, to: 'cac:InvoiceLine'}
   # Line ID
