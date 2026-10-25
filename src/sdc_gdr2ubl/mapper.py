@@ -3,7 +3,8 @@
 UBL binds meaning at the level of its aggregates, and the business documents library links its components to UBL's
 aggregates, not to each basic component, so where a value goes in UBL is declared in a mapping file, one per model.
 Where the model does bind a value to UBL (a payment means bound to UBL's PaymentMeansCode list), the mapping's
-`binding` transform takes the code from the model, and the value is a lookup.
+`binding` transform takes the code from the model, and the value is a lookup (as is any of sdc-mapper's
+`LOOKUP_TRANSFORMS`).
 
 UBL has no null flavors: an Exceptional Value has nothing to say it with, and is lost; when UBL requires the element
 whose value is exceptional, the element (or the document) cannot be written, and the report says so.
@@ -12,8 +13,8 @@ from __future__ import annotations
 
 from lxml import etree
 
-from sdc_mapper import (DECLARED, JOIN, LOOKUP, LOST, NOT_REPRESENTABLE, EVRule, IncompleteMapping, MapResult,
-                        MappingError, ValueOutcome, place)
+from sdc_mapper import (DECLARED, LOOKUP, LOOKUP_TRANSFORMS, LOST, NOT_REPRESENTABLE, EVRule, IncompleteMapping,
+                        MapResult, MappingError, ValueOutcome, join_depth, place)
 from sdcreader.record import EXCEPTIONAL_VALUES
 
 from . import __version__
@@ -59,10 +60,11 @@ class UBLMapper:
             writes = [(p.steps, p.attribute, p.text, v.position, p)]
             writes += [(e.steps, e.attribute, e.text, None, None) for e in p.extras if e.text is not None]
             for w in writes:
-                if any(key == JOIN for _, key in w[0]):
+                if join_depth(w[0]) >= 0:
                     later.append(w)
                 else:
                     self._write(b, *w)
+        later.sort(key=lambda w: join_depth(w[0]))   # shallowest first: a join through an element another join makes
         for w in later:
             self._write(b, *w)
         for c in clusters:
@@ -86,7 +88,7 @@ class UBLMapper:
             elif v.position in b.pruned:
                 outcomes.append(ValueOutcome(v.position, NOT_REPRESENTABLE, note=b.pruned[v.position]))
             else:
-                cls = LOOKUP if p.rule.transform == "binding" else DECLARED
+                cls = LOOKUP if p.rule.transform in LOOKUP_TRANSFORMS else DECLARED
                 where = "/".join(n for n, _ in p.steps) + (f"/@{p.attribute}" if p.attribute else "")
                 outcomes.append(ValueOutcome(v.position, cls, location=where))
         if missing:
