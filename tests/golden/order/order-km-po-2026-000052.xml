@@ -1,0 +1,253 @@
+<Order xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:UBLVersionID>2.3</cbc:UBLVersionID>
+  <cbc:CustomizationID>https://axius-sdc.com/library/business/order-governed-record</cbc:CustomizationID>
+  <cbc:ProfileID>urn:axius-sdc:business-documents:profile:order-only:1</cbc:ProfileID>
+  <cbc:ID>KM-PO-2026-000052</cbc:ID>
+  <cbc:CopyIndicator>false</cbc:CopyIndicator>
+  <cbc:UUID>67422439-953e-49ba-dfb4-5cc1e7db7b87</cbc:UUID>
+  <cbc:IssueDate>2026-06-18</cbc:IssueDate>
+  <cbc:IssueTime>14:02:00</cbc:IssueTime>
+  <cbc:OrderTypeCode listURI="https://axius-sdc.com/library/business/order-type">Standard order</cbc:OrderTypeCode>
+  <cbc:Note>Deliver to the dock door named on the appointment; chilled lines at 2 to 4 degrees Celsius.</cbc:Note>
+  <cbc:DocumentCurrencyCode>USD</cbc:DocumentCurrencyCode>
+  <cbc:CustomerReference>KM-BUY-804</cbc:CustomerReference>
+  <cbc:AccountingCost>Grocery 4120</cbc:AccountingCost>
+  <cbc:LineCountNumeric>2</cbc:LineCountNumeric>
+  <cac:ValidityPeriod>
+    <cbc:StartDate>2026-06-18</cbc:StartDate>
+    <cbc:EndDate>2026-07-18</cbc:EndDate>
+  </cac:ValidityPeriod>
+  <cac:Contract>
+    <cbc:ID>KM-HF-SA-2025-01</cbc:ID>
+    <cbc:IssueDate>2025-11-14</cbc:IssueDate>
+    <cbc:ContractType>Supply agreement</cbc:ContractType>
+  </cac:Contract>
+  <cac:BuyerCustomerParty>
+    <cbc:SupplierAssignedAccountID>HF-CUST-00417</cbc:SupplierAssignedAccountID>
+    <cac:Party>
+      <cbc:EndpointID>0000002000015</cbc:EndpointID>
+      <cac:PartyIdentification>
+        <cbc:ID schemeID="GLN" schemeAgencyID="9" schemeName="Global Location Number (GS1)">0000002000015</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyName>
+        <cbc:Name>Kestrel Mercantile, Inc.</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:AddressTypeCode listURI="https://axius-sdc.com/library/default/address-use">work</cbc:AddressTypeCode>
+        <cbc:StreetName>1200 West Fulton Market</cbc:StreetName>
+        <cbc:AdditionalStreetName>Suite 400</cbc:AdditionalStreetName>
+        <cbc:CityName>Chicago</cbc:CityName>
+        <cbc:PostalZone>60607</cbc:PostalZone>
+        <cbc:CountrySubentityCode>IL</cbc:CountrySubentityCode>
+        <cac:Country>
+          <cbc:IdentificationCode>US</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>Kestrel Mercantile, Inc.</cbc:RegistrationName>
+        <cbc:CompanyID>IL-77-5590012</cbc:CompanyID>
+      </cac:PartyLegalEntity>
+      <cac:Contact>
+        <cbc:Name>Grocery buying office</cbc:Name>
+        <cbc:Department>Merchandising</cbc:Department>
+        <cbc:Telephone>+1 312 555 0188</cbc:Telephone>
+        <cbc:ElectronicMail>grocery.buying@kestrelmercantile.example</cbc:ElectronicMail>
+      </cac:Contact>
+    </cac:Party>
+  </cac:BuyerCustomerParty>
+  <cac:SellerSupplierParty>
+    <cbc:CustomerAssignedAccountID>KM-VEND-2291</cbc:CustomerAssignedAccountID>
+    <cac:Party>
+      <cbc:EndpointID>0000001000016</cbc:EndpointID>
+      <cac:PartyIdentification>
+        <cbc:ID schemeID="GLN" schemeAgencyID="9" schemeName="Global Location Number (GS1)">0000001000016</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyName>
+        <cbc:Name>Halvorsen Foods, Inc.</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:AddressTypeCode listURI="https://axius-sdc.com/library/default/address-use">work</cbc:AddressTypeCode>
+        <cbc:StreetName>400 Mill Street</cbc:StreetName>
+        <cbc:CityName>Duluth</cbc:CityName>
+        <cbc:PostalZone>55802</cbc:PostalZone>
+        <cbc:CountrySubentityCode>MN</cbc:CountrySubentityCode>
+        <cac:Country>
+          <cbc:IdentificationCode>US</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>Halvorsen Foods, Inc.</cbc:RegistrationName>
+        <cbc:CompanyID>MN-41-2207731</cbc:CompanyID>
+      </cac:PartyLegalEntity>
+      <cac:Contact>
+        <cbc:Name>Order desk</cbc:Name>
+        <cbc:Department>Customer service</cbc:Department>
+        <cbc:Telephone>+1 218 555 0140</cbc:Telephone>
+        <cbc:ElectronicMail>orders@halvorsenfoods.example</cbc:ElectronicMail>
+      </cac:Contact>
+    </cac:Party>
+  </cac:SellerSupplierParty>
+  <cac:Delivery>
+    <cbc:ID>KM-PO-2026-000052-D1</cbc:ID>
+    <cbc:LatestDeliveryDate>2026-07-04</cbc:LatestDeliveryDate>
+    <cac:DeliveryLocation>
+      <cbc:ID>0000002000022</cbc:ID>
+      <cbc:Name>Kestrel Mercantile DC 2 (Joliet)</cbc:Name>
+      <cac:Address>
+        <cbc:StreetName>2900 Channahon Road</cbc:StreetName>
+        <cbc:CityName>Joliet</cbc:CityName>
+        <cbc:PostalZone>60436</cbc:PostalZone>
+        <cbc:CountrySubentityCode>IL</cbc:CountrySubentityCode>
+        <cac:Country>
+          <cbc:IdentificationCode>US</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:Address>
+    </cac:DeliveryLocation>
+    <cac:RequestedDeliveryPeriod>
+      <cbc:StartDate>2026-07-01</cbc:StartDate>
+      <cbc:EndDate>2026-07-04</cbc:EndDate>
+    </cac:RequestedDeliveryPeriod>
+  </cac:Delivery>
+  <cac:DeliveryTerms>
+    <cbc:ID schemeName="Incoterms 2020">DAP</cbc:ID>
+    <cbc:SpecialTerms>Appointment required 48 hours ahead; pallets to the retailer's pack specification in force on the delivery date.</cbc:SpecialTerms>
+  </cac:DeliveryTerms>
+  <cac:PaymentMeans>
+    <cbc:PaymentMeansCode name="Automated clearing house credit">2</cbc:PaymentMeansCode>
+    <cbc:PaymentDueDate>2026-07-18</cbc:PaymentDueDate>
+  </cac:PaymentMeans>
+  <cac:PaymentTerms>
+    <cbc:ID>NET30-2/10</cbc:ID>
+    <cbc:Note>Net 30 days; 2 percent settlement discount for payment within 10 days.</cbc:Note>
+    <cbc:SettlementDiscountPercent>2.0000</cbc:SettlementDiscountPercent>
+    <cbc:PaymentDueDate>2026-07-18</cbc:PaymentDueDate>
+    <cac:SettlementPeriod>
+      <cbc:StartDate>2026-06-18</cbc:StartDate>
+      <cbc:EndDate>2026-06-28</cbc:EndDate>
+    </cac:SettlementPeriod>
+  </cac:PaymentTerms>
+  <cac:TaxTotal>
+    <cbc:TaxAmount currencyID="USD">0.00</cbc:TaxAmount>
+    <cac:TaxSubtotal>
+      <cbc:TaxableAmount currencyID="USD">1231.20</cbc:TaxableAmount>
+      <cbc:TaxAmount currencyID="USD">0.00</cbc:TaxAmount>
+      <cac:TaxCategory>
+        <cbc:ID>E</cbc:ID>
+        <cbc:Name>Exempt from tax</cbc:Name>
+        <cbc:Percent>0.0000</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>IL-ROT</cbc:ID>
+          <cbc:Name>Illinois Retailers' Occupation Tax</cbc:Name>
+        </cac:TaxScheme>
+      </cac:TaxCategory>
+    </cac:TaxSubtotal>
+  </cac:TaxTotal>
+  <cac:AnticipatedMonetaryTotal>
+    <cbc:LineExtensionAmount currencyID="USD">1231.20</cbc:LineExtensionAmount>
+    <cbc:TaxExclusiveAmount currencyID="USD">1231.20</cbc:TaxExclusiveAmount>
+    <cbc:TaxInclusiveAmount currencyID="USD">1231.20</cbc:TaxInclusiveAmount>
+    <cbc:PayableAmount currencyID="USD">1231.20</cbc:PayableAmount>
+  </cac:AnticipatedMonetaryTotal>
+  <cac:OrderLine>
+    <cac:LineItem>
+      <cbc:ID>1</cbc:ID>
+      <cbc:LineStatusCode listURI="https://axius-sdc.com/library/business/line-status">No status</cbc:LineStatusCode>
+      <cbc:Quantity unitCode="CS">12</cbc:Quantity>
+      <cbc:LineExtensionAmount currencyID="USD">626.40</cbc:LineExtensionAmount>
+      <cbc:TotalTaxAmount currencyID="USD">0.00</cbc:TotalTaxAmount>
+      <cbc:PartialDeliveryIndicator>false</cbc:PartialDeliveryIndicator>
+      <cbc:BackOrderAllowedIndicator>true</cbc:BackOrderAllowedIndicator>
+      <cac:Price>
+        <cbc:PriceAmount currencyID="USD">52.2000</cbc:PriceAmount>
+        <cbc:BaseQuantity unitCode="CS">1</cbc:BaseQuantity>
+        <cbc:PriceTypeCode listURI="https://axius-sdc.com/library/business/price-type">Contract price</cbc:PriceTypeCode>
+      </cac:Price>
+      <cac:Item>
+        <cbc:Description>Cod fish cakes, 1 kg tray, 6 per case, chilled</cbc:Description>
+        <cbc:PackQuantity>6</cbc:PackQuantity>
+        <cbc:Name>Halvorsen Fish Cakes 1 kg</cbc:Name>
+        <cbc:BrandName>Halvorsen</cbc:BrandName>
+        <cac:BuyersItemIdentification>
+          <cbc:ID schemeName="Buyer's item number">KM-14001</cbc:ID>
+        </cac:BuyersItemIdentification>
+        <cac:SellersItemIdentification>
+          <cbc:ID schemeName="Seller's item number">HF-4001</cbc:ID>
+        </cac:SellersItemIdentification>
+        <cac:StandardItemIdentification>
+          <cbc:ID schemeID="GTIN" schemeAgencyID="9" schemeName="Global Trade Item Number (GS1)">10000001000068</cbc:ID>
+        </cac:StandardItemIdentification>
+        <cac:CommodityClassification>
+          <cbc:ItemClassificationCode>50121500</cbc:ItemClassificationCode>
+        </cac:CommodityClassification>
+        <cac:ClassifiedTaxCategory>
+          <cbc:ID>E</cbc:ID>
+          <cbc:Name>Exempt from tax</cbc:Name>
+          <cbc:Percent>0.0000</cbc:Percent>
+          <cac:TaxScheme>
+            <cbc:ID>IL-ROT</cbc:ID>
+            <cbc:Name>Illinois Retailers' Occupation Tax</cbc:Name>
+          </cac:TaxScheme>
+        </cac:ClassifiedTaxCategory>
+        <cac:Dimension>
+          <cbc:AttributeID>Weight</cbc:AttributeID>
+          <cbc:Measure unitCode="KGM">6.90</cbc:Measure>
+        </cac:Dimension>
+        <cac:Dimension>
+          <cbc:AttributeID>Volume</cbc:AttributeID>
+          <cbc:Measure unitCode="LTR">8.400</cbc:Measure>
+        </cac:Dimension>
+      </cac:Item>
+    </cac:LineItem>
+  </cac:OrderLine>
+  <cac:OrderLine>
+    <cac:LineItem>
+      <cbc:ID>2</cbc:ID>
+      <cbc:LineStatusCode listURI="https://axius-sdc.com/library/business/line-status">No status</cbc:LineStatusCode>
+      <cbc:Quantity unitCode="CS">18</cbc:Quantity>
+      <cbc:LineExtensionAmount currencyID="USD">604.80</cbc:LineExtensionAmount>
+      <cbc:TotalTaxAmount currencyID="USD">0.00</cbc:TotalTaxAmount>
+      <cbc:PartialDeliveryIndicator>false</cbc:PartialDeliveryIndicator>
+      <cbc:BackOrderAllowedIndicator>true</cbc:BackOrderAllowedIndicator>
+      <cac:Price>
+        <cbc:PriceAmount currencyID="USD">33.6000</cbc:PriceAmount>
+        <cbc:BaseQuantity unitCode="CS">1</cbc:BaseQuantity>
+        <cbc:PriceTypeCode listURI="https://axius-sdc.com/library/business/price-type">Contract price</cbc:PriceTypeCode>
+      </cac:Price>
+      <cac:Item>
+        <cbc:Description>Rye crispbread with sunflower and sesame, 250 g carton, 12 per case</cbc:Description>
+        <cbc:PackQuantity>12</cbc:PackQuantity>
+        <cbc:Name>Halvorsen Seeded Crispbread 250 g</cbc:Name>
+        <cbc:BrandName>Halvorsen</cbc:BrandName>
+        <cac:BuyersItemIdentification>
+          <cbc:ID schemeName="Buyer's item number">KM-11002</cbc:ID>
+        </cac:BuyersItemIdentification>
+        <cac:SellersItemIdentification>
+          <cbc:ID schemeName="Seller's item number">HF-1002</cbc:ID>
+        </cac:SellersItemIdentification>
+        <cac:StandardItemIdentification>
+          <cbc:ID schemeID="GTIN" schemeAgencyID="9" schemeName="Global Trade Item Number (GS1)">10000001000020</cbc:ID>
+        </cac:StandardItemIdentification>
+        <cac:CommodityClassification>
+          <cbc:ItemClassificationCode>50181900</cbc:ItemClassificationCode>
+        </cac:CommodityClassification>
+        <cac:ClassifiedTaxCategory>
+          <cbc:ID>E</cbc:ID>
+          <cbc:Name>Exempt from tax</cbc:Name>
+          <cbc:Percent>0.0000</cbc:Percent>
+          <cac:TaxScheme>
+            <cbc:ID>IL-ROT</cbc:ID>
+            <cbc:Name>Illinois Retailers' Occupation Tax</cbc:Name>
+          </cac:TaxScheme>
+        </cac:ClassifiedTaxCategory>
+        <cac:Dimension>
+          <cbc:AttributeID>Weight</cbc:AttributeID>
+          <cbc:Measure unitCode="KGM">3.45</cbc:Measure>
+        </cac:Dimension>
+        <cac:Dimension>
+          <cbc:AttributeID>Volume</cbc:AttributeID>
+          <cbc:Measure unitCode="LTR">9.600</cbc:Measure>
+        </cac:Dimension>
+      </cac:Item>
+    </cac:LineItem>
+  </cac:OrderLine>
+</Order>

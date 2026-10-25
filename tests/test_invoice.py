@@ -1,5 +1,4 @@
-"""The Invoice mapping: conformant UBL, equivalent to HalvorsenDemo's hand-written writer, and honest about what UBL
-cannot say."""
+"""What UBL cannot say, shown on the Invoice: Exceptional Values, required elements, and mappings that would guess."""
 from __future__ import annotations
 
 import io
@@ -8,7 +7,7 @@ from pathlib import Path
 import pytest
 from lxml import etree
 
-from sdc_mapper import DECLARED, ERROR, LOOKUP, LOST, NOT_REPRESENTABLE, VALID, Engine, MappingError, load_mapping
+from sdc_mapper import ERROR, LOST, NOT_REPRESENTABLE, VALID, Engine, MappingError, load_mapping
 from sdc_gdr2ubl import UBLMapper, mapping_path
 from sdc_gdr2ubl.writer import schema_for
 
@@ -16,7 +15,6 @@ ROOT = Path(__file__).resolve().parents[1]
 SAMPLE = ROOT / "samples" / "halvorsen-invoice"
 CT = "u19w614300a8ot4a7qnn2o1c"
 RECORDS = sorted((SAMPLE / "records").glob("*.xml"))
-GOLDEN = sorted((ROOT / "tests" / "golden").glob("*.xml"))
 SDC4 = "https://semanticdatacharter.com/ns/sdc4/"
 NS = {"sdc4": SDC4}
 
@@ -33,53 +31,6 @@ def mapping():
 
 def run(engine, mapping, xml: bytes):
     return engine.map_record(xml, UBLMapper(), mapping, directory=str(SAMPLE))
-
-
-def flat(el, path=""):
-    """Every element, in document order: its path, its text, its attributes (listURI's value aside: HalvorsenDemo
-    names the library's page for the list, this mapping the list component's own IRI)."""
-    p = f"{path}/{etree.QName(el).localname}"
-    attrs = dict(el.attrib)
-    has_list = attrs.pop("listURI", None) is not None
-    out = [(p, (el.text or "").strip(), tuple(sorted(attrs.items())), has_list)]
-    for c in el:
-        out += flat(c, p)
-    return out
-
-
-@pytest.mark.parametrize("golden", GOLDEN, ids=lambda p: p.stem)
-def test_equivalent_to_the_hand_written_writer(engine, mapping, golden):
-    r = run(engine, mapping, (SAMPLE / "records" / golden.name).read_bytes())
-    assert r.outcome == VALID, r.errors
-    ours = etree.fromstring(r.files["Invoice.xml"])
-    assert flat(ours) == flat(etree.fromstring(golden.read_bytes()))
-
-
-def test_every_record_maps_to_a_conformant_invoice(engine, mapping):
-    schema = schema_for("Invoice")
-    for f in RECORDS:
-        r = run(engine, mapping, f.read_bytes())
-        assert r.outcome == VALID, (f.name, r.errors)
-        assert schema.is_valid(etree.fromstring(r.files["Invoice.xml"])), f.name
-
-
-def test_the_report_accounts_for_every_value(engine, mapping):
-    r = run(engine, mapping, RECORDS[0].read_bytes())
-    classes = {v["class"] for v in r.report.values}
-    assert classes <= {DECLARED, LOOKUP, NOT_REPRESENTABLE}
-    payment = [v for v in r.report.values if v["label"] == "Payment Means"]
-    assert payment and all(v["class"] == LOOKUP for v in payment), "the model binds the payment means to UBL's list"
-    status = next(v for v in r.report.values if v["label"] == "Document Status")
-    assert status["class"] == NOT_REPRESENTABLE and "document status" in status["note"]
-    audit = [v for v in r.report.values if v["path"][1:2] == ["Audit Event"]]
-    assert audit and all(v["class"] == NOT_REPRESENTABLE for v in audit)
-
-
-def test_a_list_travels_with_its_component(engine, mapping):
-    r = run(engine, mapping, RECORDS[0].read_bytes())
-    root = etree.fromstring(r.files["Invoice.xml"])
-    code = root.find("{*}InvoiceTypeCode")
-    assert code.get("listURI").startswith(f"{SDC4}mc-")
 
 
 # ---------------------------------------------------------------- Exceptional Values: UBL has no null flavors

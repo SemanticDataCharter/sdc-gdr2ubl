@@ -5,8 +5,8 @@ Governed Data Records as conformant OASIS UBL 2.3 documents. A target mapper for
 against its model and reports each one; this package says where each value goes in UBL and writes the document.
 Outbound only. Apache 2.0.
 
-**Status:** 4.0.0 in development. One model so far: the business documents library's **Invoice**
-(`u19w614300a8ot4a7qnn2o1c`).
+**Status:** 4.0.0 in development. Models so far, from the business documents library: **Invoice**
+(`u19w614300a8ot4a7qnn2o1c`) and **Order** (`h8bttbt9afwzf9zs4jhae566`).
 
 ## Use
 
@@ -49,13 +49,16 @@ Where the model does bind a value to UBL, the mapping says only where it goes, a
 payment means and allowance charge reason components bind each of their values to UBL's code lists
 (`PaymentMeansCode-2.3.gc#2`), so the code written is the model's own.
 
-The mapping files are written with `tools/build_mapping.py` from a spec in the model's labels (`tools/specs/`), which
-also checks that every value the model can hold reaches a rule: placed, or omitted with a reason.
+The mapping files are written with `tools/build_mapping.py` from a spec in the model's labels (`tools/specs/`: one per
+document, composed with the rules every library document shares in `common.py`), which also checks that every value
+the model can hold reaches a rule: placed, or omitted with a reason.
 
-The Invoice's placements were worked out first in HalvorsenDemo's hand-written UBL writer. For all 52 Invoice records
-in `samples/`, this mapping and that writer produce the same document, element by element, with one difference: a
-token's `listURI` here is the list component's own published identifier
-(`https://semanticdatacharter.com/ns/sdc4/mc-…`), where HalvorsenDemo names the library's page for the list.
+The placements were worked out first in HalvorsenDemo's hand-written UBL writers. For all 52 Invoice and all 52 Order
+records in `samples/`, this mapping and that writer produce the same document, element by element, with two
+differences: a token's `listURI` here is the list component's own published identifier
+(`https://semanticdatacharter.com/ns/sdc4/mc-…`), where HalvorsenDemo names the library's page for the list; and an
+item's repeated `Dimension` elements follow the record's order, where HalvorsenDemo uses a fixed one (UBL gives them
+none).
 
 ## What UBL cannot say
 
@@ -71,8 +74,8 @@ token's `listURI` here is the list component's own published identifier
   document.
 - Validity windows and recording times (act, vtb, vte, tr), and the definitions each component is bound to, beyond a
   list's `listURI`.
-- In the Invoice: the header's document status (UBL's Invoice has none), and a contact point's method and use (UBL's
-  Contact has neither).
+- A contact point's method and use (UBL's Contact has neither); in the Invoice, the header's document status (UBL's
+  Invoice has none); in the Order, a catalogue reference's document type (UBL's CatalogueReference is the type).
 
 ## How the writer works
 
@@ -89,5 +92,5 @@ pip install -e ".[dev]"
 python -m pytest
 ```
 
-The suite maps all 52 Invoice records and checks each against the OASIS schema, compares five with HalvorsenDemo's
-writer (`tests/golden/`), and exercises Exceptional Values and refused mappings.
+The suite maps every sample record and checks each against the OASIS schema, compares five of each document with
+HalvorsenDemo's writers (`tests/golden/`), and exercises Exceptional Values and refused mappings.
