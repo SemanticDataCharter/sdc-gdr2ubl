@@ -1,0 +1,196 @@
+<RemittanceAdvice xmlns="urn:oasis:names:specification:ubl:schema:xsd:RemittanceAdvice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:UBLVersionID>2.3</cbc:UBLVersionID>
+  <cbc:CustomizationID>https://axius-sdc.com/library/business/remittance-advice-governed-record</cbc:CustomizationID>
+  <cbc:ProfileID>urn:axius-sdc:business-documents:profile:order-only:1</cbc:ProfileID>
+  <cbc:ID>KM-RA-PAY-2027-000012</cbc:ID>
+  <cbc:CopyIndicator>false</cbc:CopyIndicator>
+  <cbc:UUID>03c1ffd2-34a0-45a7-574c-00a9fc575893</cbc:UUID>
+  <cbc:IssueDate>2027-02-28</cbc:IssueDate>
+  <cbc:IssueTime>10:31:00</cbc:IssueTime>
+  <cbc:Note>Payment run for the invoices due in February 2027; each invoice paid less the credit note issued against it.</cbc:Note>
+  <cbc:DocumentCurrencyCode>USD</cbc:DocumentCurrencyCode>
+  <cbc:TotalDebitAmount currencyID="USD">10520.40</cbc:TotalDebitAmount>
+  <cbc:TotalCreditAmount currencyID="USD">126.65</cbc:TotalCreditAmount>
+  <cbc:TotalPaymentAmount currencyID="USD">10393.75</cbc:TotalPaymentAmount>
+  <cbc:PaymentOrderReference>KM-BANK-202702-0012</cbc:PaymentOrderReference>
+  <cbc:PayerReference>KM-AP-2027-000012</cbc:PayerReference>
+  <cbc:InvoicingPartyReference>KM-BUY-903</cbc:InvoicingPartyReference>
+  <cbc:LineCountNumeric>4</cbc:LineCountNumeric>
+  <cac:InvoicePeriod>
+    <cbc:StartDate>2027-02-01</cbc:StartDate>
+    <cbc:EndDate>2027-02-28</cbc:EndDate>
+  </cac:InvoicePeriod>
+  <cac:AccountingCustomerParty>
+    <cbc:SupplierAssignedAccountID>HF-CUST-00417</cbc:SupplierAssignedAccountID>
+    <cac:Party>
+      <cbc:EndpointID>0000002000015</cbc:EndpointID>
+      <cac:PartyIdentification>
+        <cbc:ID schemeID="GLN" schemeAgencyID="9" schemeName="Global Location Number (GS1)">0000002000015</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyName>
+        <cbc:Name>Kestrel Mercantile, Inc.</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:AddressTypeCode listURI="https://axius-sdc.com/library/default/address-use">work</cbc:AddressTypeCode>
+        <cbc:StreetName>1200 West Fulton Market</cbc:StreetName>
+        <cbc:AdditionalStreetName>Suite 400</cbc:AdditionalStreetName>
+        <cbc:CityName>Chicago</cbc:CityName>
+        <cbc:PostalZone>60607</cbc:PostalZone>
+        <cbc:CountrySubentityCode>IL</cbc:CountrySubentityCode>
+        <cac:Country>
+          <cbc:IdentificationCode>US</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>Kestrel Mercantile, Inc.</cbc:RegistrationName>
+        <cbc:CompanyID>IL-77-5590012</cbc:CompanyID>
+      </cac:PartyLegalEntity>
+      <cac:Contact>
+        <cbc:Name>Grocery buying office</cbc:Name>
+        <cbc:Department>Merchandising</cbc:Department>
+        <cbc:Telephone>+1 312 555 0188</cbc:Telephone>
+        <cbc:ElectronicMail>grocery.buying@kestrelmercantile.example</cbc:ElectronicMail>
+      </cac:Contact>
+    </cac:Party>
+  </cac:AccountingCustomerParty>
+  <cac:AccountingSupplierParty>
+    <cbc:CustomerAssignedAccountID>KM-VEND-2291</cbc:CustomerAssignedAccountID>
+    <cac:Party>
+      <cbc:EndpointID>0000001000016</cbc:EndpointID>
+      <cac:PartyIdentification>
+        <cbc:ID schemeID="GLN" schemeAgencyID="9" schemeName="Global Location Number (GS1)">0000001000016</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyName>
+        <cbc:Name>Halvorsen Foods, Inc.</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:AddressTypeCode listURI="https://axius-sdc.com/library/default/address-use">work</cbc:AddressTypeCode>
+        <cbc:StreetName>400 Mill Street</cbc:StreetName>
+        <cbc:CityName>Duluth</cbc:CityName>
+        <cbc:PostalZone>55802</cbc:PostalZone>
+        <cbc:CountrySubentityCode>MN</cbc:CountrySubentityCode>
+        <cac:Country>
+          <cbc:IdentificationCode>US</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>Halvorsen Foods, Inc.</cbc:RegistrationName>
+        <cbc:CompanyID>MN-41-2207731</cbc:CompanyID>
+      </cac:PartyLegalEntity>
+      <cac:Contact>
+        <cbc:Name>Order desk</cbc:Name>
+        <cbc:Department>Customer service</cbc:Department>
+        <cbc:Telephone>+1 218 555 0140</cbc:Telephone>
+        <cbc:ElectronicMail>orders@halvorsenfoods.example</cbc:ElectronicMail>
+      </cac:Contact>
+    </cac:Party>
+  </cac:AccountingSupplierParty>
+  <cac:PaymentMeans>
+    <cbc:PaymentMeansCode name="Automated clearing house credit">2</cbc:PaymentMeansCode>
+    <cbc:PaymentDueDate>2027-02-28</cbc:PaymentDueDate>
+  </cac:PaymentMeans>
+  <cac:TaxTotal>
+    <cbc:TaxAmount currencyID="USD">0.00</cbc:TaxAmount>
+    <cac:TaxSubtotal>
+      <cbc:TaxableAmount currencyID="USD">10393.75</cbc:TaxableAmount>
+      <cbc:TaxAmount currencyID="USD">0.00</cbc:TaxAmount>
+      <cac:TaxCategory>
+        <cbc:ID>E</cbc:ID>
+        <cbc:Name>Exempt from tax</cbc:Name>
+        <cbc:Percent>0.0000</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>IL-ROT</cbc:ID>
+          <cbc:Name>Illinois Retailers' Occupation Tax</cbc:Name>
+        </cac:TaxScheme>
+      </cac:TaxCategory>
+    </cac:TaxSubtotal>
+  </cac:TaxTotal>
+  <cac:RemittanceAdviceLine>
+    <cbc:ID>1</cbc:ID>
+    <cbc:Note>Credit note HF-CN-2027-000011 taken into account: 44.93 USD off the invoice.</cbc:Note>
+    <cbc:DebitLineAmount currencyID="USD">1497.60</cbc:DebitLineAmount>
+    <cbc:CreditLineAmount currencyID="USD">44.93</cbc:CreditLineAmount>
+    <cbc:BalanceAmount currencyID="USD">1452.67</cbc:BalanceAmount>
+    <cbc:PaymentPurposeCode>Payment of invoice less credit note</cbc:PaymentPurposeCode>
+    <cbc:InvoicingPartyReference>HF-INV-2027-000011</cbc:InvoicingPartyReference>
+    <cac:InvoicePeriod>
+      <cbc:StartDate>2027-01-09</cbc:StartDate>
+      <cbc:EndDate>2027-02-08</cbc:EndDate>
+    </cac:InvoicePeriod>
+    <cac:BillingReference>
+      <cac:InvoiceDocumentReference>
+        <cbc:ID>HF-INV-2027-000011</cbc:ID>
+        <cbc:IssueDate>2027-01-09</cbc:IssueDate>
+        <cbc:DocumentType>Invoice</cbc:DocumentType>
+      </cac:InvoiceDocumentReference>
+      <cac:CreditNoteDocumentReference>
+        <cbc:ID>HF-CN-2027-000011</cbc:ID>
+        <cbc:IssueDate>2027-01-23</cbc:IssueDate>
+        <cbc:DocumentType>Credit note</cbc:DocumentType>
+      </cac:CreditNoteDocumentReference>
+    </cac:BillingReference>
+  </cac:RemittanceAdviceLine>
+  <cac:RemittanceAdviceLine>
+    <cbc:ID>2</cbc:ID>
+    <cbc:Note>Credit note HF-CN-2027-000017 taken into account: 81.72 USD off the invoice.</cbc:Note>
+    <cbc:DebitLineAmount currencyID="USD">2724.00</cbc:DebitLineAmount>
+    <cbc:CreditLineAmount currencyID="USD">81.72</cbc:CreditLineAmount>
+    <cbc:BalanceAmount currencyID="USD">2642.28</cbc:BalanceAmount>
+    <cbc:PaymentPurposeCode>Payment of invoice less credit note</cbc:PaymentPurposeCode>
+    <cbc:InvoicingPartyReference>HF-INV-2027-000017</cbc:InvoicingPartyReference>
+    <cac:InvoicePeriod>
+      <cbc:StartDate>2027-01-04</cbc:StartDate>
+      <cbc:EndDate>2027-02-03</cbc:EndDate>
+    </cac:InvoicePeriod>
+    <cac:BillingReference>
+      <cac:InvoiceDocumentReference>
+        <cbc:ID>HF-INV-2027-000017</cbc:ID>
+        <cbc:IssueDate>2027-01-04</cbc:IssueDate>
+        <cbc:DocumentType>Invoice</cbc:DocumentType>
+      </cac:InvoiceDocumentReference>
+      <cac:CreditNoteDocumentReference>
+        <cbc:ID>HF-CN-2027-000017</cbc:ID>
+        <cbc:IssueDate>2027-01-18</cbc:IssueDate>
+        <cbc:DocumentType>Credit note</cbc:DocumentType>
+      </cac:CreditNoteDocumentReference>
+    </cac:BillingReference>
+  </cac:RemittanceAdviceLine>
+  <cac:RemittanceAdviceLine>
+    <cbc:ID>3</cbc:ID>
+    <cbc:DebitLineAmount currencyID="USD">4849.80</cbc:DebitLineAmount>
+    <cbc:CreditLineAmount currencyID="USD">0.00</cbc:CreditLineAmount>
+    <cbc:BalanceAmount currencyID="USD">4849.80</cbc:BalanceAmount>
+    <cbc:PaymentPurposeCode>Payment of invoice</cbc:PaymentPurposeCode>
+    <cbc:InvoicingPartyReference>HF-INV-2027-000033</cbc:InvoicingPartyReference>
+    <cac:InvoicePeriod>
+      <cbc:StartDate>2027-01-02</cbc:StartDate>
+      <cbc:EndDate>2027-02-01</cbc:EndDate>
+    </cac:InvoicePeriod>
+    <cac:BillingReference>
+      <cac:InvoiceDocumentReference>
+        <cbc:ID>HF-INV-2027-000033</cbc:ID>
+        <cbc:IssueDate>2027-01-02</cbc:IssueDate>
+        <cbc:DocumentType>Invoice</cbc:DocumentType>
+      </cac:InvoiceDocumentReference>
+    </cac:BillingReference>
+  </cac:RemittanceAdviceLine>
+  <cac:RemittanceAdviceLine>
+    <cbc:ID>4</cbc:ID>
+    <cbc:DebitLineAmount currencyID="USD">1449.00</cbc:DebitLineAmount>
+    <cbc:CreditLineAmount currencyID="USD">0.00</cbc:CreditLineAmount>
+    <cbc:BalanceAmount currencyID="USD">1449.00</cbc:BalanceAmount>
+    <cbc:PaymentPurposeCode>Payment of invoice</cbc:PaymentPurposeCode>
+    <cbc:InvoicingPartyReference>HF-INV-2027-000045</cbc:InvoicingPartyReference>
+    <cac:InvoicePeriod>
+      <cbc:StartDate>2027-01-07</cbc:StartDate>
+      <cbc:EndDate>2027-02-06</cbc:EndDate>
+    </cac:InvoicePeriod>
+    <cac:BillingReference>
+      <cac:InvoiceDocumentReference>
+        <cbc:ID>HF-INV-2027-000045</cbc:ID>
+        <cbc:IssueDate>2027-01-07</cbc:IssueDate>
+        <cbc:DocumentType>Invoice</cbc:DocumentType>
+      </cac:InvoiceDocumentReference>
+    </cac:BillingReference>
+  </cac:RemittanceAdviceLine>
+</RemittanceAdvice>

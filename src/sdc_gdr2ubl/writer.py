@@ -23,7 +23,7 @@ from pathlib import Path
 
 from lxml import etree
 
-from sdc_mapper import MappingError
+from sdc_mapper import JOIN, MappingError
 
 XSD = Path(__file__).with_name("xsd")
 CAC = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
@@ -103,8 +103,9 @@ def _fillable(decl, seen=()) -> bool:
 
 
 class Builder:
-    def __init__(self, document: str):
+    def __init__(self, document: str, order: dict[str, int] | None = None):
         self.document = document
+        self.order = order or {}             # declared cluster order (Mapping.cluster_order)
         self.root: Node | None = None
         self.index: dict[tuple, Node] = {}
         self.pruned: dict[int, str] = {}      # value position -> why its element was removed
@@ -121,6 +122,14 @@ class Builder:
             raise MappingError(f"one document, one document element: {self.root.name} and {name}")
         node = self.root
         for name, key in steps[1:]:
+            if key == JOIN:          # the element of that name the parent already has, or a new one
+                found = [c for c in node.children if c.name == name]
+                if len(found) > 1:
+                    raise MappingError(f"'={name}' under {node.name}: {len(found)} elements of that name, so which "
+                                       "one is not settled")
+                if found:
+                    node = found[0]
+                    continue
             k = (id(node), name, key)
             child = self.index.get(k)
             if child is None:
@@ -217,9 +226,14 @@ class Builder:
                     return False, f"UBL requires {short} in {node.name}, and the record has no value for it"
         if not kept:
             return False, f"{node.name} has nothing in it"
-        kept.sort(key=lambda kc: t.order[kc[1].name])            # stable: repeats keep the record's order
+        # by the UBL type's sequence; repeats by the declared order of the clusters that made them, else the record's
+        kept.sort(key=lambda kc: (t.order[kc[1].name], self._rank(kc[0].key)))
         node.children = [c for c, _ in kept]
         return True, ""
+
+    def _rank(self, key: tuple) -> tuple:
+        return tuple(self.order[part[0]] for part in key
+                     if isinstance(part, tuple) and len(part) == 2 and part[0] in self.order)
 
     def _short(self, qname: str) -> str:
         ns, local = qname[1:].split("}", 1)

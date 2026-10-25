@@ -162,6 +162,17 @@ PAYMENT_TERMS = [
     C("Settlement Period", "cac:SettlementPeriod"),
 ]
 
+TAX_CATEGORY = [
+    C("Tax Category", "cac:TaxCategory"),
+    C("Tax Category", "cac:ClassifiedTaxCategory", within=["Item"]),
+    V("Tax Category ID", "cbc:ID"),
+    V("Tax Category Name", "cbc:Name"),
+    V("Tax Percent", "cbc:Percent"),
+    C("Tax Scheme", "cac:TaxScheme"),
+    V("Tax Scheme ID", "cbc:ID"),
+    V("Tax Scheme Name", "cbc:Name"),
+]
+
 ALLOWANCES_AND_TAX = [
     C("Allowance Charge", "cac:AllowanceCharge"),
     V("Charge Indicator", "cbc:ChargeIndicator"),
@@ -176,14 +187,7 @@ ALLOWANCES_AND_TAX = [
     V("Tax Amount", "cbc:TaxAmount", **AMOUNT),
     C("Tax Subtotal", "cac:TaxSubtotal"),
     V("Taxable Amount", "cbc:TaxableAmount", **AMOUNT),
-    C("Tax Category", "cac:TaxCategory"),
-    C("Tax Category", "cac:ClassifiedTaxCategory", within=["Item"]),
-    V("Tax Category ID", "cbc:ID"),
-    V("Tax Category Name", "cbc:Name"),
-    V("Tax Percent", "cbc:Percent"),
-    C("Tax Scheme", "cac:TaxScheme"),
-    V("Tax Scheme ID", "cbc:ID"),
-    V("Tax Scheme Name", "cbc:Name"),
+    *TAX_CATEGORY,
 ]
 
 
@@ -232,4 +236,62 @@ ITEM_AND_PRICE = [
     V("Base Quantity", "cbc:BaseQuantity", **QUANTITY),
     V("Price Type", "cbc:PriceTypeCode", listURI=True),
     C("Price Validity Period", "cac:ValidityPeriod"),
+]
+
+LINE_REFERENCES = [
+    C("Order Line Reference", "cac:OrderLineReference"),
+    C("Despatch Line Reference", "cac:DespatchLineReference"),
+    C("Receipt Line Reference", "cac:ReceiptLineReference"),
+    *[V("Line ID", "cbc:LineID", within=[ref]) for ref in
+      ("Order Line Reference", "Despatch Line Reference", "Receipt Line Reference")],
+    V("Sales Order Line ID", "cbc:SalesOrderLineID"),
+    C("Document Reference", "cac:DocumentReference", within=["Despatch Line Reference"]),
+    C("Document Reference", "cac:DocumentReference", within=["Receipt Line Reference"]),
+]
+
+#: Weights and volumes in UBL carry the UN/ECE Recommendation 20 code of the Default library's SI unit.
+SI = {"units": {"to": "@unitCode", "transform": "code", "table": REC20}}
+
+SHIPMENT_MEASURES = [
+    V("Gross Weight", "cbc:GrossWeightMeasure", **SI),
+    V("Net Weight", "cbc:NetWeightMeasure", **SI),
+    V("Gross Volume", "cbc:GrossVolumeMeasure", **SI),
+    V("Net Volume", "cbc:NetVolumeMeasure", **SI),
+]
+
+#: The GS1 Serial Shipping Container Code: a transport handling unit's identifier, its scheme named.
+SSCC = {"schemeID": "SSCC", "schemeAgencyID": "9", "schemeName": "Serial Shipping Container Code (GS1)"}
+PALLET_SCHEME_ID = {"Global Returnable Asset Identifier (GS1)": "GRAI"}
+PALLET_SCHEME_AGENCY = {"Global Returnable Asset Identifier (GS1)": "9"}
+PALLET_ID_DOCUMENT = "Pallet identification"
+PACK_SPECIFICATION_DOCUMENT = "Pack specification"
+
+
+def unit_document(document_type: str):
+    """A document the handling unit names by identifier and kind: one ShipmentDocumentReference of the value's own."""
+    return {"also": [{"to": "+cac:ShipmentDocumentReference/cbc:DocumentType", "transform": "constant",
+                      "value": document_type}]}
+
+
+SHIPMENT = [
+    C("Shipment", "cac:Shipment"),
+    V("Shipment ID", "cbc:ID"),
+    V("Handling Instructions", "cbc:HandlingInstructions"),
+    *SHIPMENT_MEASURES,
+    C("Consignment", "cac:Consignment"),
+    V("Consignment ID", "cbc:ID"),
+    V("Carrier Assigned ID", "cbc:CarrierAssignedID"),
+    C("Carrier Party", "cac:CarrierParty"),
+    C("Party", ".", within=["Carrier Party"]),          # UBL's CarrierParty is itself of UBL's PartyType
+    V("Transport Handling Unit ID", "cbc:ID", attributes=SSCC),
+    # the pallet as an asset: UBL's TransportEquipment; UBL gives equipment no validity period, so the identifier's
+    # period is the equipment's document reference of type "Pallet identification"
+    C("Pallet Identification", "cac:TransportEquipment"),
+    V("Pallet ID", "cbc:ID", also=[
+        {"to": "=cac:ShipmentDocumentReference/cbc:ID", "transform": "copy"},
+        {"to": "=cac:ShipmentDocumentReference/cbc:DocumentType", "transform": "constant", "value": PALLET_ID_DOCUMENT}]),
+    V("Pallet ID Scheme", "cbc:ID/@schemeName", also=[
+        {"to": "cbc:ID/@schemeID", "transform": "code", "table": PALLET_SCHEME_ID, "on_miss": "omit"},
+        {"to": "cbc:ID/@schemeAgencyID", "transform": "code", "table": PALLET_SCHEME_AGENCY, "on_miss": "omit"}]),
+    C("Date Range", "cac:ShipmentDocumentReference/cac:ValidityPeriod", within=["Pallet Identification"]),
 ]

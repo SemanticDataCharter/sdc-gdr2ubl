@@ -1,0 +1,374 @@
+# Despatch Advice (business documents library) to OASIS UBL 2.3 DespatchAdvice
+# Written by tools/build_mapping.py from tools/specs/despatch_advice.py; labels in the comments.
+mapping:
+  id: despatch-advice-ubl-2.3
+  version: 1
+  author: Axius SDC, Inc.
+  date: '2026-10-25'
+  description: 'The Despatch Advice model''s values in a UBL 2.3 DespatchAdvice. Declared: the library links its components
+    to UBL''s aggregates, not to each basic component.'
+model:
+  ct_id: cacl4njrwanj15g3p3so8t6h
+  schema_sha256: ccd29fd5c3b88e29622734a63d4367aa16f136acf909bbfa47a94886231a637d
+target:
+  name: OASIS UBL
+  version: '2.3'
+rules:
+  # Despatch Advice Governed Record
+  - {cluster: tpr7hl7tuq5qb7kv56h472d0, to: DespatchAdvice}
+  # Despatch Advice
+  - {cluster: t86e5aegimwbwlz5d7qtt52h, to: .}
+  # Audit Event
+  - {cluster: t2tvd3wylxrstdeu5aw6gkw1, to: '-', transform: omit, reason: 'the record''s audit event: UBL has no place for it'}
+  # PROV Activity
+  - {cluster: vmikfu0irht9fmq7q02t3oqs, to: '-', transform: omit, reason: 'the record''s provenance: UBL has no place for it'}
+  # PROV Agent
+  - {cluster: c179ilk2ns15cd5rzzdfd6f6, to: '-', transform: omit, reason: 'the record''s provenance: UBL has no place for it'}
+  # PROV Entity
+  - {cluster: q0ckidtsg1x3iav6nrt8fo0l, to: '-', transform: omit, reason: 'the record''s provenance: UBL has no place for it'}
+  # Despatch Advice Document
+  - {cluster: sct30jwhneakv0p618p07tda, to: .}
+  # Customization ID
+  - {component: rgnvj03kjtej1s8brdeil4kq, to: 'cbc:CustomizationID', transform: copy}
+  # Profile ID
+  - {component: ato2r6lpk92i9e5djcwrna74, to: 'cbc:ProfileID', transform: copy}
+  # Profile Execution ID
+  - {component: blz32vkqw11awazaklpdih7b, to: 'cbc:ProfileExecutionID', transform: copy}
+  # Copy Indicator
+  - {component: nsv2eblxq8s0vk28ue2vh1fl, to: 'cbc:CopyIndicator', transform: copy}
+  # Document UUID
+  - {component: wa674d96vzd8um4nwbtjrorz, to: 'cbc:UUID', transform: copy}
+  # Issue Date
+  - {component: tkd16hhh9wbn0qya2ykm0552, to: 'cbc:IssueDate', transform: copy}
+  # Issue Time
+  - {component: oybfzltffyfioix1zdblxcp3, to: 'cbc:IssueTime', transform: copy}
+  # Note
+  - {component: zvkk8ztob9gmrvvkzyibyrzk, to: 'cbc:Note', transform: copy}
+  # Line Count
+  - {component: c1c7iydc13os47ppwwtwsnum, to: 'cbc:LineCountNumeric', transform: copy}
+  # Date Range
+  - {cluster: ru9u47yxhe337pslpxm6cflx, to: .}
+  # Date Range Start
+  - {component: bcyjfdwobh9q60umle1amw0w, to: 'cbc:StartDate', transform: copy}
+  # Date Range End
+  - {component: moo2lije2b05ylq8q4t52lcb, to: 'cbc:EndDate', transform: copy}
+  # Despatch Advice ID
+  - {component: xic0zafpt7zu0ckizkj4975w, to: 'cbc:ID', transform: copy}
+  # Document Status
+  - {component: mnuyvuxqsy0qskx8hiy6epff, to: 'cbc:DocumentStatusCode', transform: copy, attributes: {listURI: 'https://semanticdatacharter.com/ns/sdc4/mc-mnuyvuxqsy0qskx8hiy6epff'}}
+  # Despatch Advice Type
+  - {component: ukniai5soht5il1ggomsphwd, to: 'cbc:DespatchAdviceTypeCode', transform: copy, attributes: {listURI: 'https://semanticdatacharter.com/ns/sdc4/mc-ukniai5soht5il1ggomsphwd'}}
+  # Order Reference
+  - {cluster: zj2hjn6wx3dfa0h5vlzeexhw, to: 'cac:OrderReference'}
+  # Order ID
+  - {component: wtnd4hzyrntlwtp4z3l1gcpr, to: 'cbc:ID', transform: copy}
+  # Sales Order ID
+  - {component: mllhwxhu0zvxhwt32em2t821, to: 'cbc:SalesOrderID', transform: copy}
+  # Order Type
+  - {component: q9k20amngqerxvhpvhwn9t3q, to: 'cbc:OrderTypeCode', transform: copy, attributes: {listURI: 'https://semanticdatacharter.com/ns/sdc4/mc-q9k20amngqerxvhpvhwn9t3q'}}
+  # Document Reference
+  - {cluster: uk03ahua6zv9d0i5tqq5qzmh, to: .}
+  # Additional Document Reference
+  - {cluster: m1cppki3rm9et0bhz1lej8l7, to: 'cac:AdditionalDocumentReference'}
+  # Line Document Reference
+  - {cluster: ed2ps98xb93s24el1z94lx7x, to: 'cac:DocumentReference'}
+  # Document Reference ID
+  - {component: k153quyn7i9ravd1b3c61ad9, to: 'cbc:ID', transform: copy}
+  # Document Reference Issue Date
+  - {component: ncxchb14dkm790w4rnuzafju, to: 'cbc:IssueDate', transform: copy}
+  # Document Type
+  - {component: hyw1higymybzar9tv2ze77xa, to: 'cbc:DocumentType', transform: copy}
+  # Document Description
+  - {component: z181ta9jftxc7k63rv4nz1zv, to: 'cbc:DocumentDescription', transform: copy}
+  # Despatch Supplier Party
+  - {cluster: cdyq0vg2nh68yutkqc4ytzph, to: 'cac:DespatchSupplierParty'}
+  # Delivery Customer Party
+  - {cluster: s8tx9ictdkar3opfjsb2r1oo, to: 'cac:DeliveryCustomerParty'}
+  # Originator Customer Party
+  - {cluster: fsd8eci6qo8ck0rfokhdvhwq, to: 'cac:OriginatorCustomerParty'}
+  # Supplier Party
+  - {cluster: utcj07ovkb7ntkbq8ix0ro4l, to: .}
+  # Customer Party
+  - {cluster: asbbdn0eof6713wx4y2e90c2, to: .}
+  # Customer Assigned Account ID
+  - {component: ybdlctks32zkkteycr5y1eq8, to: 'cbc:CustomerAssignedAccountID', transform: copy}
+  # Supplier Assigned Account ID
+  - {component: nhvx21mf5ac81670xyrpwbaz, to: 'cbc:SupplierAssignedAccountID', transform: copy}
+  # Buyer Customer Party
+  - {cluster: nylve3b8ss572vh8zso2u4l7, to: 'cac:BuyerCustomerParty'}
+  # Seller Supplier Party
+  - {cluster: xkkk5vyegpy4xdig8vnabstc, to: 'cac:SellerSupplierParty'}
+  # Delivery Party
+  - {cluster: j5s0gw9dabkpb7hc8r0wiu8o, to: 'cac:DeliveryParty'}
+  # Party
+  - {cluster: useph7s4ienfhwerqx2thedj, to: 'cac:Party'}
+  # Party (within Delivery Party)
+  - {cluster: useph7s4ienfhwerqx2thedj, within: [j5s0gw9dabkpb7hc8r0wiu8o], to: .}
+  # Endpoint ID
+  - {component: fpb149j9um0l676icmhyp56d, to: 'cbc:EndpointID', transform: copy}
+  # Party Identification
+  - {cluster: z0gdpy67iot29gdc2zq2v1jj, to: 'cac:PartyIdentification'}
+  # Party Identification Value
+  - {component: iwxh8exsn4qb6eyetfbwqvmj, to: 'cbc:ID', transform: copy}
+  # Party Identification Scheme
+  - {component: c9v9nkkg6b8sixoaf55vyjrn, to: 'cbc:ID/@schemeName', transform: copy, also: [{to: 'cbc:ID/@schemeID', transform: code, table: {Global Location Number (GS1): GLN, DUNS number: DUNS}, on_miss: omit}, {to: 'cbc:ID/@schemeAgencyID', transform: code, table: {Global Location Number (GS1): '9', DUNS number: '16'}, on_miss: omit}]}
+  # Organization Name
+  - {component: xcn8r67fg7soty17homzok44, to: 'cac:PartyName/cbc:Name', transform: copy}
+  # US Address
+  - {cluster: jqgvof35d7y83wkfcgiic5em, to: 'cac:PostalAddress'}
+  # International Address
+  - {cluster: upawqojmcfg3qsf4ffzi47ho, to: 'cac:PostalAddress'}
+  # US Address (within Delivery Location)
+  - {cluster: jqgvof35d7y83wkfcgiic5em, within: [p4s8c066xzhex2ibiy6nwv4r], to: 'cac:Address'}
+  # International Address (within Delivery Location)
+  - {cluster: upawqojmcfg3qsf4ffzi47ho, within: [p4s8c066xzhex2ibiy6nwv4r], to: 'cac:Address'}
+  # Address Use
+  - {component: b25dj42zxhm19pih328ga8pl, to: 'cbc:AddressTypeCode', transform: copy, attributes: {listURI: 'https://semanticdatacharter.com/ns/sdc4/mc-b25dj42zxhm19pih328ga8pl'}}
+  # Address (Line 1)
+  - {component: ncxxt7wgs7soxw7kbmapxvg3, to: 'cbc:StreetName', transform: copy}
+  # Address (Line 2)
+  - {component: sexw93x5276zwsn1qx15htpv, to: 'cbc:AdditionalStreetName', transform: copy}
+  # City Name
+  - {component: toysvef93azt57fgh8rwpd4b, to: 'cbc:CityName', transform: copy}
+  # US ZIP Code
+  - {component: cjzq0xnrm0uu8p1h51koheoz, to: 'cbc:PostalZone', transform: copy}
+  # Postal Code
+  - {component: gf841eedvv6cjiegs934srai, to: 'cbc:PostalZone', transform: copy}
+  # US State Code
+  - {component: k9tqm489kilg33mx4cibyto6, to: 'cbc:CountrySubentityCode', transform: copy}
+  # Region Name
+  - {component: jw1b9q6ulyte599sdsqp2mvp, to: 'cbc:CountrySubentity', transform: copy}
+  # Country Code ISO 3166
+  - {component: f2jicaigehz7xmwcp1gm5gh0, to: 'cac:Country/cbc:IdentificationCode', transform: copy}
+  # Party Legal Entity
+  - {cluster: cslzdtawth1xxjjslf1975qt, to: 'cac:PartyLegalEntity'}
+  # Registration Name
+  - {component: ev7lhh4t59tt8ot0tfoaztb6, to: 'cbc:RegistrationName', transform: copy}
+  # Company ID
+  - {component: axizk9c3k82w84p1t1wkwayu, to: 'cbc:CompanyID', transform: copy}
+  # Party Contact
+  - {cluster: kibeh8vp79shumcdyj8xzqw1, to: 'cac:Contact'}
+  # Contact Point
+  - {cluster: d2xwhnb2vqzxw70jcizj9csx, to: .}
+  # Contact Name
+  - {component: fp533gyfb6yatp6jgpg2emb2, to: 'cbc:Name', transform: copy}
+  # Contact Job Title
+  - {component: ozkpv9buivm77ozkybm0ww39, to: 'cbc:JobTitle', transform: copy}
+  # Contact Department
+  - {component: bkw6awwe7kp01kowlwbgn21b, to: 'cbc:Department', transform: copy}
+  # Phone Number
+  - {component: zpfwg52r88j6jdypj7rg71ke, to: 'cbc:Telephone', transform: copy}
+  # Fax Number
+  - {component: ll6ltsnvakomixuitxkbkxfz, to: 'cbc:Telefax', transform: copy}
+  # Email Address
+  - {component: q922mqaon3yn5zlwf2bszf28, to: 'cbc:ElectronicMail', transform: copy}
+  # Website URL
+  - {component: wriny2gz8aqcvffmfpwbompk, to: '../cbc:WebsiteURI', transform: copy}
+  # Contact Method
+  - {component: miqo30r5b554nyj7ubryw43x, to: '-', transform: omit, reason: UBL's Contact has no contact method}
+  # Contact Use
+  - {component: vmruk4j9y1orvvz8cwafrax5, to: '-', transform: omit, reason: UBL's Contact has no contact use}
+  # Shipment
+  - {cluster: xpchzzo1o836ocrn0kchoqgl, to: 'cac:Shipment'}
+  # Shipment ID
+  - {component: kkskzpaxwvq35hu7d58lri9i, to: 'cbc:ID', transform: copy}
+  # Handling Instructions
+  - {component: io8ojmlwtfwwundq2hvpy90t, to: 'cbc:HandlingInstructions', transform: copy}
+  # Gross Weight
+  - {component: bd9ce3tw67ska7itn2u4oquz, to: 'cbc:GrossWeightMeasure', transform: copy, units: {to: '@unitCode', transform: code, table: {mm: MMT, cm: CMT, m: MTR, km: KMT, mg: MGM, g: GRM, kg: KGM, mL: MLT, L: LTR, °C: CEL, K: KEL}}}
+  # Net Weight
+  - {component: ajn86wk5iuv4srkck2fa845h, to: 'cbc:NetWeightMeasure', transform: copy, units: {to: '@unitCode', transform: code, table: {mm: MMT, cm: CMT, m: MTR, km: KMT, mg: MGM, g: GRM, kg: KGM, mL: MLT, L: LTR, °C: CEL, K: KEL}}}
+  # Gross Volume
+  - {component: o5jsdb587p1t99lla4ugy5zn, to: 'cbc:GrossVolumeMeasure', transform: copy, units: {to: '@unitCode', transform: code, table: {mm: MMT, cm: CMT, m: MTR, km: KMT, mg: MGM, g: GRM, kg: KGM, mL: MLT, L: LTR, °C: CEL, K: KEL}}}
+  # Net Volume
+  - {component: ingl69umk5y46l4owo4ti9u4, to: 'cbc:NetVolumeMeasure', transform: copy, units: {to: '@unitCode', transform: code, table: {mm: MMT, cm: CMT, m: MTR, km: KMT, mg: MGM, g: GRM, kg: KGM, mL: MLT, L: LTR, °C: CEL, K: KEL}}}
+  # Consignment
+  - {cluster: qctc9amczcwtdzsagogn74kq, to: 'cac:Consignment'}
+  # Consignment ID
+  - {component: rja27fqwdoq0t7b2lq0nlyxn, to: 'cbc:ID', transform: copy}
+  # Carrier Assigned ID
+  - {component: jyf4t7vmhv3v7nr5jv4go4uf, to: 'cbc:CarrierAssignedID', transform: copy}
+  # Carrier Party
+  - {cluster: fzihiybv5hemngvjwzuhwjun, to: 'cac:CarrierParty'}
+  # Party (within Carrier Party)
+  - {cluster: useph7s4ienfhwerqx2thedj, within: [fzihiybv5hemngvjwzuhwjun], to: .}
+  # Transport Handling Unit ID
+  - {component: fmicvqjowc64hani966ab62m, to: 'cbc:ID', transform: copy, attributes: {schemeID: SSCC, schemeAgencyID: '9', schemeName: Serial Shipping Container Code (GS1)}}
+  # Pallet Identification
+  - {cluster: bdmgp0sntcaygzbo5b9p1alr, to: 'cac:TransportEquipment'}
+  # Pallet ID
+  - {component: u1hc8cblrwytertipp1twfed, to: 'cbc:ID', transform: copy, also: [{to: '=cac:ShipmentDocumentReference/cbc:ID', transform: copy}, {to: '=cac:ShipmentDocumentReference/cbc:DocumentType', transform: constant, value: Pallet identification}]}
+  # Pallet ID Scheme
+  - {component: xvbh3ef9ai7wwusx3hl0uyyy, to: 'cbc:ID/@schemeName', transform: copy, also: [{to: 'cbc:ID/@schemeID', transform: code, table: {Global Returnable Asset Identifier (GS1): GRAI}, on_miss: omit}, {to: 'cbc:ID/@schemeAgencyID', transform: code, table: {Global Returnable Asset Identifier (GS1): '9'}, on_miss: omit}]}
+  # Date Range (within Pallet Identification)
+  - {cluster: ru9u47yxhe337pslpxm6cflx, within: [bdmgp0sntcaygzbo5b9p1alr], to: 'cac:ShipmentDocumentReference/cac:ValidityPeriod'}
+  # Delivery
+  - {cluster: sy3rqkwaui6b7gfjbqxb15wt, to: 'cac:Delivery'}
+  # Delivery ID
+  - {component: xxnvc50tm2l6hqejitd5lalh, to: 'cbc:ID', transform: copy}
+  # Delivery Quantity
+  - {component: mgt29p1un237uma77q8ay8or, to: 'cbc:Quantity', transform: copy, units: {to: '@unitCode', transform: copy}}
+  # Latest Delivery Date
+  - {component: z180eu0o81qv2cfgjejo5unw, to: 'cbc:LatestDeliveryDate', transform: copy}
+  # Delivery Location
+  - {cluster: p4s8c066xzhex2ibiy6nwv4r, to: 'cac:DeliveryLocation'}
+  # Delivery Location ID
+  - {component: lpixlk20bads9j3ggtte22px, to: 'cbc:ID', transform: copy}
+  # Delivery Location Name
+  - {component: ude1r385xvd2002r5h851vwk, to: 'cbc:Name', transform: copy}
+  # Requested Delivery Period
+  - {cluster: oyxla2t2d4hxnbqwhchvjcyf, to: 'cac:RequestedDeliveryPeriod'}
+  # Total Goods Item Quantity
+  - {component: w29trfwb02pr4oju6as1rgbp, to: 'cbc:TotalGoodsItemQuantity', transform: copy}
+  # Total Transport Handling Unit Quantity
+  - {component: u004qwi7kokgldrb81n52m76, to: 'cbc:TotalTransportHandlingUnitQuantity', transform: copy}
+  # Transport Handling Units
+  - {cluster: yg1saspem73i58cl1yaxerl6, to: .}
+  # Transport Handling Unit 1
+  - {cluster: hyissx9f47x6eoq1wmy1s757, to: ., order: 1}
+  # Transport Handling Unit 2
+  - {cluster: qf918ef5lw3art1ymvabdzun, to: ., order: 2}
+  # Transport Handling Unit 3
+  - {cluster: kxfqtm7in678nzypvepglakx, to: ., order: 3}
+  # Transport Handling Unit 4
+  - {cluster: wn6s93y0bppa71yrhh1ff6mq, to: ., order: 4}
+  # Transport Handling Unit 5
+  - {cluster: rega8404a0y39vsytcl1j58o, to: ., order: 5}
+  # Transport Handling Unit 6
+  - {cluster: ka985zb36w0c32hxcu86kru3, to: ., order: 6}
+  # Transport Handling Unit
+  - {cluster: y7wsymdevaev3kpztsc7vax3, to: 'cac:TransportHandlingUnit'}
+  # Transport Handling Unit Type
+  - {component: k04gbu3btfvb93r7cdp8hpj0, to: 'cbc:TransportHandlingUnitTypeCode', transform: copy, attributes: {listURI: 'https://semanticdatacharter.com/ns/sdc4/mc-k04gbu3btfvb93r7cdp8hpj0'}}
+  # Shipping Marks
+  - {component: t8ht3wr8vtqe71w8gxwbwuxp, to: 'cbc:ShippingMarks', transform: copy}
+  # Total Package Quantity
+  - {component: jab5s4s2hz2aqnoapxrz1tm5, to: 'cbc:TotalPackageQuantity', transform: copy}
+  # Minimum Temperature
+  - {component: p9a9td1129yz4a2vzq1o9ef5, to: 'cac:MinimumTemperature/cbc:Measure', transform: copy, units: {to: '@unitCode', transform: code, table: {mm: MMT, cm: CMT, m: MTR, km: KMT, mg: MGM, g: GRM, kg: KGM, mL: MLT, L: LTR, °C: CEL, K: KEL}}, also: [{to: 'cac:MinimumTemperature/cbc:AttributeID', transform: constant, value: Minimum}]}
+  # Maximum Temperature
+  - {component: b2syvnylnxgj4beu4ha8zc10, to: 'cac:MaximumTemperature/cbc:Measure', transform: copy, units: {to: '@unitCode', transform: code, table: {mm: MMT, cm: CMT, m: MTR, km: KMT, mg: MGM, g: GRM, kg: KGM, mL: MLT, L: LTR, °C: CEL, K: KEL}}, also: [{to: 'cac:MaximumTemperature/cbc:AttributeID', transform: constant, value: Maximum}]}
+  # Package
+  - {cluster: ix4g3aj0p4yw2qfp656zjl8n, to: 'cac:Package'}
+  # Package ID
+  - {component: e6to4tpltr03hpkoc77znci5, to: 'cbc:ID', transform: copy}
+  # Package Quantity
+  - {component: ffomlh7xybuxq9vgiwm9blx3, to: 'cbc:Quantity', transform: copy}
+  # Packaging Type
+  - {component: z89am2q73qovwbnctjmztg8x, to: 'cbc:PackagingTypeCode', transform: copy, attributes: {listURI: 'https://semanticdatacharter.com/ns/sdc4/mc-z89am2q73qovwbnctjmztg8x'}}
+  # Pack Specification
+  - {cluster: ysfv32fg9sci1y55sz8wyy66, to: .}
+  # Pack Specification Version
+  - {component: qd6oq894pmea3e6adz3cji85, to: '../+cac:ShipmentDocumentReference/cbc:ID', transform: copy, also: [{to: '../+cac:ShipmentDocumentReference/cbc:DocumentType', transform: constant, value: Pack specification}]}
+  # Layers per Pallet
+  - {component: r7bzwgpvapt4ajp5tkiu8gqa, to: 'cac:ContainedPackage/cbc:Quantity', transform: copy, also: [{to: 'cac:ContainedPackage/cbc:PackageLevelCode', transform: constant, value: Layer}]}
+  # Cases per Layer
+  - {component: u6evwwh0k2w4z9j3www5n0zu, to: 'cac:ContainedPackage/cac:ContainedPackage/cbc:Quantity', transform: copy, also: [{to: 'cac:ContainedPackage/cbc:PackageLevelCode', transform: constant, value: Layer}, {to: 'cac:ContainedPackage/cac:ContainedPackage/cbc:PackageLevelCode', transform: constant, value: Case}]}
+  # Pallet Height
+  - {component: nnhjzn7jvi1vb3rpmdarzrt1, to: '+cac:MeasurementDimension/cbc:Measure', transform: copy, units: {to: '@unitCode', transform: code, table: {mm: MMT, cm: CMT, m: MTR, km: KMT, mg: MGM, g: GRM, kg: KGM, mL: MLT, L: LTR, °C: CEL, K: KEL}}, also: [{to: '+cac:MeasurementDimension/cbc:AttributeID', transform: constant, value: Height}]}
+  # Weight (within Pack Specification)
+  - {component: cc2p4vt57qgbdttxkngwhv93, within: [ysfv32fg9sci1y55sz8wyy66], to: '+cac:MeasurementDimension/cbc:Measure', transform: copy, units: {to: '@unitCode', transform: code, table: {mm: MMT, cm: CMT, m: MTR, km: KMT, mg: MGM, g: GRM, kg: KGM, mL: MLT, L: LTR, °C: CEL, K: KEL}}, also: [{to: '+cac:MeasurementDimension/cbc:AttributeID', transform: constant, value: Weight}]}
+  # Despatch Lines
+  - {cluster: cszw3zp6c0wxpxqjcuwkjbvj, to: .}
+  # Despatch Line 1
+  - {cluster: lzpdfvfrnaotrtla7vicgy21, to: ., order: 1}
+  # Despatch Line 2
+  - {cluster: z670midq4j4et541c5kqx6tx, to: ., order: 2}
+  # Despatch Line 3
+  - {cluster: pb9300tan1hedtojtu9yo7v7, to: ., order: 3}
+  # Despatch Line 4
+  - {cluster: wdnqf13yllexvoqjow6i2ig3, to: ., order: 4}
+  # Despatch Line 5
+  - {cluster: njcpbxjfirxc1q04xtriswrt, to: ., order: 5}
+  # Despatch Line 6
+  - {cluster: m3m3tljitmny4hgp5gn15j09, to: ., order: 6}
+  # Despatch Line 7
+  - {cluster: j81b0b4akf80obsohhmbzex4, to: ., order: 7}
+  # Despatch Line 8
+  - {cluster: al5731t1oeinjpifuw5zivq3, to: ., order: 8}
+  # Despatch Line 9
+  - {cluster: pcq49qecxob1zobf3ss5x9u7, to: ., order: 9}
+  # Despatch Line 10
+  - {cluster: nlfbz1szfwesie1oipp5qyjx, to: ., order: 10}
+  # Despatch Line
+  - {cluster: adukypipz0oo5fmgsza5rbca, to: 'cac:DespatchLine'}
+  # Line ID
+  - {component: qnymhn26y7zfy7jav1pi3dqi, to: 'cbc:ID', transform: copy}
+  # Line Status
+  - {component: sb5gat3jakjg1j6m78nq79in, to: 'cbc:LineStatusCode', transform: copy, attributes: {listURI: 'https://semanticdatacharter.com/ns/sdc4/mc-sb5gat3jakjg1j6m78nq79in'}}
+  # Item
+  - {cluster: g1mdkay36qkfgmtv4lvsqe4x, to: 'cac:Item'}
+  # Item Description
+  - {component: k0n1pwt88vd4e97alxtobizg, to: 'cbc:Description', transform: copy}
+  # Pack Quantity
+  - {component: reydo3ozx3ie5sit1rfwsoc4, to: 'cbc:PackQuantity', transform: copy}
+  # Pack Size
+  - {component: zf1gwuh6jx7iyy2w0aam4plx, to: 'cbc:PackSizeNumeric', transform: copy}
+  # Item Name
+  - {component: iz74r6dn6ud4wqb2jsr8b82y, to: 'cbc:Name', transform: copy}
+  # Brand Name
+  - {component: z2hiu8mpip80cq23km4fggwr, to: 'cbc:BrandName', transform: copy}
+  # Model Name
+  - {component: lgcfrui3pdx1rhceu488rxyy, to: 'cbc:ModelName', transform: copy}
+  # Buyer's Item Identification
+  - {cluster: a80v6wq587y2fbws71tku996, to: 'cac:BuyersItemIdentification'}
+  # Seller's Item Identification
+  - {cluster: q597i0tjhythg66t0hrgzuny, to: 'cac:SellersItemIdentification'}
+  # Manufacturer's Item Identification
+  - {cluster: u7d337s016i2dotve10nec4c, to: 'cac:ManufacturersItemIdentification'}
+  # Standard Item Identification
+  - {cluster: y4wy0qhkvx503a4llnzx1fg2, to: 'cac:StandardItemIdentification'}
+  # Item Identification
+  - {cluster: cqqaghmjayj4vo9qv1xv2ezv, to: .}
+  # Item Identification Value
+  - {component: db1bt3xlh3m1jpvnmesx480v, to: 'cbc:ID', transform: copy}
+  # Item Identification Scheme
+  - {component: k84kh4trdynaoi242c268lat, to: 'cbc:ID/@schemeName', transform: copy, also: [{to: 'cbc:ID/@schemeID', transform: code, table: {Global Trade Item Number (GS1): GTIN}, on_miss: omit}, {to: 'cbc:ID/@schemeAgencyID', transform: code, table: {Global Trade Item Number (GS1): '9'}, on_miss: omit}]}
+  # Item Extended ID
+  - {component: span8j8v0dghr4rjnit4s5uh, to: 'cbc:ExtendedID', transform: copy}
+  # Commodity Classification
+  - {cluster: ku29eiis39dbz3td95f2x5ng, to: 'cac:CommodityClassification'}
+  # Commodity Code
+  - {component: lx0s1wl1avkrf61p5j3135bn, to: 'cbc:CommodityCode', transform: copy}
+  # Item Classification Code
+  - {component: aeu7ruba5it242eejjc653r9, to: 'cbc:ItemClassificationCode', transform: copy}
+  # Item Dimensions
+  - {cluster: mnrjznltm3hkmgtepxraj8ix, to: .}
+  # Length/Distance
+  - {component: vl0xhkn7z4gkgq5j2psifiil, to: '+cac:Dimension/cbc:Measure', transform: copy, units: {to: '@unitCode', transform: code, table: {mm: MMT, cm: CMT, m: MTR, km: KMT, mg: MGM, g: GRM, kg: KGM, mL: MLT, L: LTR, °C: CEL, K: KEL}}, also: [{to: '+cac:Dimension/cbc:AttributeID', transform: constant, value: Length}]}
+  # Weight
+  - {component: cc2p4vt57qgbdttxkngwhv93, to: '+cac:Dimension/cbc:Measure', transform: copy, units: {to: '@unitCode', transform: code, table: {mm: MMT, cm: CMT, m: MTR, km: KMT, mg: MGM, g: GRM, kg: KGM, mL: MLT, L: LTR, °C: CEL, K: KEL}}, also: [{to: '+cac:Dimension/cbc:AttributeID', transform: constant, value: Weight}]}
+  # Volume
+  - {component: pkye7oq6g55daxxjtbiwe7uv, to: '+cac:Dimension/cbc:Measure', transform: copy, units: {to: '@unitCode', transform: code, table: {mm: MMT, cm: CMT, m: MTR, km: KMT, mg: MGM, g: GRM, kg: KGM, mL: MLT, L: LTR, °C: CEL, K: KEL}}, also: [{to: '+cac:Dimension/cbc:AttributeID', transform: constant, value: Volume}]}
+  # Tax Category
+  - {cluster: f3hxcmvvq1jtowruh5y3evhc, to: 'cac:TaxCategory'}
+  # Tax Category (within Item)
+  - {cluster: f3hxcmvvq1jtowruh5y3evhc, within: [g1mdkay36qkfgmtv4lvsqe4x], to: 'cac:ClassifiedTaxCategory'}
+  # Tax Category ID
+  - {component: p6c7q343dafqwvcq6m1ffz5i, to: 'cbc:ID', transform: copy}
+  # Tax Category Name
+  - {component: ehh24wvyu4fsa3rbeheft3kj, to: 'cbc:Name', transform: copy}
+  # Tax Percent
+  - {component: v4zn5xtqlkni8qr3ly7e2j1a, to: 'cbc:Percent', transform: copy}
+  # Tax Scheme
+  - {cluster: u23p2mgw0aw90lu5eh3o2ix0, to: 'cac:TaxScheme'}
+  # Tax Scheme ID
+  - {component: mexx9mfi4rglmgi71nqf37ux, to: 'cbc:ID', transform: copy}
+  # Tax Scheme Name
+  - {component: g7952fbwz8uh2ig9uidu9877, to: 'cbc:Name', transform: copy}
+  # Delivered Quantity
+  - {component: zcscx4615uj8lj0mhwlfcb41, to: 'cbc:DeliveredQuantity', transform: copy, units: {to: '@unitCode', transform: copy}}
+  # Backorder Quantity
+  - {component: sw6gj527nymh29rbpk2p03oc, to: 'cbc:BackorderQuantity', transform: copy, units: {to: '@unitCode', transform: copy}}
+  # Backorder Reason
+  - {component: awg0cpwmv5a9e4cfgadwja8n, to: 'cbc:BackorderReason', transform: copy}
+  # Outstanding Quantity
+  - {component: j4eujkbstsjx6pbbbmejajxg, to: 'cbc:OutstandingQuantity', transform: copy, units: {to: '@unitCode', transform: copy}}
+  # Outstanding Reason
+  - {component: lmd7tnh359upc16za6rqyv9g, to: 'cbc:OutstandingReason', transform: copy}
+  # Order Line Reference
+  - {cluster: c3qfzlybvce95akizb8gcbtw, to: 'cac:OrderLineReference'}
+  # Line ID (within Order Line Reference)
+  - {component: qnymhn26y7zfy7jav1pi3dqi, within: [c3qfzlybvce95akizb8gcbtw], to: 'cbc:LineID', transform: copy}
+  # Sales Order Line ID
+  - {component: vzzejwis0nptpcqf5t5rb9sl, to: 'cbc:SalesOrderLineID', transform: copy}

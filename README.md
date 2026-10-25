@@ -5,8 +5,18 @@ Governed Data Records as conformant OASIS UBL 2.3 documents. A target mapper for
 against its model and reports each one; this package says where each value goes in UBL and writes the document.
 Outbound only. Apache 2.0.
 
-**Status:** 4.0.0 in development. Models so far, from the business documents library: **Invoice**
-(`u19w614300a8ot4a7qnn2o1c`) and **Order** (`h8bttbt9afwzf9zs4jhae566`).
+**Status:** 4.0.0 in development. Every document of the business documents library has a mapping:
+
+| Model | ct_id | UBL 2.3 document | Rules |
+|---|---|---|---|
+| Order | `h8bttbt9afwzf9zs4jhae566` | Order | 181 |
+| Torvale Order (profile) | `cq1fjrvyn0fxl1kyk9y3kr1w` | Order | 190 |
+| Order Response | `kuntv2wlkw54h7nxe0kqhvi2` | OrderResponse | 204 |
+| Despatch Advice | `cacl4njrwanj15g3p3so8t6h` | DespatchAdvice | 179 |
+| Receipt Advice | `tog0v0p1zit1xwpxysxwpf3d` | ReceiptAdvice | 175 |
+| Invoice | `u19w614300a8ot4a7qnn2o1c` | Invoice | 212 |
+| Credit Note | `jkuyr38hydqaiwlq5vhp2rjr` | CreditNote | 211 |
+| Remittance Advice | `fgtbf38cj0bwxppxn69etcci` | RemittanceAdvice | 112 |
 
 ## Use
 
@@ -53,12 +63,16 @@ The mapping files are written with `tools/build_mapping.py` from a spec in the m
 document, composed with the rules every library document shares in `common.py`), which also checks that every value
 the model can hold reaches a rule: placed, or omitted with a reason.
 
-The placements were worked out first in HalvorsenDemo's hand-written UBL writers. For all 52 Invoice and all 52 Order
-records in `samples/`, this mapping and that writer produce the same document, element by element, with two
-differences: a token's `listURI` here is the list component's own published identifier
-(`https://semanticdatacharter.com/ns/sdc4/mc-…`), where HalvorsenDemo names the library's page for the list; and an
-item's repeated `Dimension` elements follow the record's order, where HalvorsenDemo uses a fixed one (UBL gives them
-none).
+The placements were worked out first in HalvorsenDemo's hand-written UBL writers. For all 293 sample records across
+the eight models, this package and those writers produce the same document, element by element, with two kinds of
+difference:
+
+- Where a document names one of the library's components (a token's `listURI`, a receipt check's description), this
+  package uses the component's own published identifier (`https://semanticdatacharter.com/ns/sdc4/mc-…`), where
+  HalvorsenDemo names the library's page for it.
+- Repeats UBL gives no order (an item's `Dimension`s, a handling unit's `Status`es and `ShipmentDocumentReference`s)
+  follow the record's order here, where HalvorsenDemo uses lists of its own. Lines follow the order each mapping
+  declares (`order:` on the line clusters), so line 10 comes after line 9.
 
 ## What UBL cannot say
 
@@ -74,8 +88,10 @@ none).
   document.
 - Validity windows and recording times (act, vtb, vte, tr), and the definitions each component is bound to, beyond a
   list's `listURI`.
-- A contact point's method and use (UBL's Contact has neither); in the Invoice, the header's document status (UBL's
-  Invoice has none); in the Order, a catalogue reference's document type (UBL's CatalogueReference is the type).
+- A contact point's method and use (UBL's Contact has neither); the document status of an Invoice, a Credit Note and
+  a Remittance Advice (UBL's documents of those kinds have none); a catalogue reference's document type (UBL's
+  CatalogueReference is the type); on an order response line, the line item's own status (UBL has one
+  `LineStatusCode` there, and it carries the line's answer).
 
 ## How the writer works
 
@@ -92,5 +108,5 @@ pip install -e ".[dev]"
 python -m pytest
 ```
 
-The suite maps every sample record and checks each against the OASIS schema, compares five of each document with
-HalvorsenDemo's writers (`tests/golden/`), and exercises Exceptional Values and refused mappings.
+The suite maps every sample record and checks each against the OASIS schema, compares up to five of each document
+with HalvorsenDemo's writers (`tests/golden/`), and exercises Exceptional Values and refused mappings.

@@ -4,8 +4,8 @@ Where each value goes was worked out first in HalvorsenDemo's hand-written UBL w
 writer it builds on); this spec states the same placements as data, composed with the rules every library document
 shares (common.py).
 """
-from common import (ALLOWANCES_AND_TAX, AMOUNT, C, DELIVERY, DOCUMENT_REFERENCES, HEADER, ITEM_AND_PRICE, OMIT,
-                    PARTIES, PAYMENT_TERMS, QUANTITY, V, monetary_total, payment_means, record)
+from common import (ALLOWANCES_AND_TAX, AMOUNT, C, DELIVERY, DOCUMENT_REFERENCES, HEADER, ITEM_AND_PRICE,
+                    LINE_REFERENCES, OMIT, PARTIES, PAYMENT_TERMS, QUANTITY, V, monetary_total, payment_means, record)
 
 TITLE = "Invoice (business documents library) to OASIS UBL 2.3 Invoice"
 ID = "invoice-ubl-2.3"
@@ -67,18 +67,11 @@ RULES = [
     *monetary_total("Legal Monetary Total", "cac:LegalMonetaryTotal"),
 
     C("Invoice Lines", "."),
-    *[C(f"Invoice Line {n}", ".") for n in range(1, 11)],
+    *[C(f"Invoice Line {n}", ".", order=n) for n in range(1, 11)],
     C("Invoice Line", "cac:InvoiceLine"),
     *ITEM_AND_PRICE,
     V("Invoiced Quantity", "cbc:InvoicedQuantity", **QUANTITY),
     V("Tax Inclusive Line Extension Amount", "cbc:TaxInclusiveLineExtensionAmount", **AMOUNT),
     V("Free of Charge", "cbc:FreeOfChargeIndicator"),
-    C("Order Line Reference", "cac:OrderLineReference"),
-    C("Despatch Line Reference", "cac:DespatchLineReference"),
-    C("Receipt Line Reference", "cac:ReceiptLineReference"),
-    *[V("Line ID", "cbc:LineID", within=[ref]) for ref in
-      ("Order Line Reference", "Despatch Line Reference", "Receipt Line Reference")],
-    V("Sales Order Line ID", "cbc:SalesOrderLineID"),
-    C("Document Reference", "cac:DocumentReference", within=["Despatch Line Reference"]),
-    C("Document Reference", "cac:DocumentReference", within=["Receipt Line Reference"]),
+    *LINE_REFERENCES,
 ]
