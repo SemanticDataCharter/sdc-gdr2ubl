@@ -1,6 +1,5 @@
 name: tests
-# Offline on every pull request and on main. sdc-mapper is private and unpublished for now, so it is checked out with
-# a read-only token (the SDC_MAPPER_READ secret); once sdc-mapper is on PyPI, the two sdc-mapper steps go.
+# Offline on every pull request and on main.
 on:
   pull_request:
   push:
@@ -10,15 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/checkout@v7
-        with:
-          repository: SemanticDataCharter/sdc-mapper
-          ref: main
-          path: sdc-mapper
-          token: ${{ secrets.SDC_MAPPER_READ }}
       - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
-      - run: pip install -e ./sdc-mapper
       - run: pip install -e ".[dev]"
       - run: python -m pytest tests -q -p no:warnings
